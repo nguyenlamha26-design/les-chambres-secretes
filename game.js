@@ -144,10 +144,11 @@
         <div class="sct"><b>${s.icon} ${X(s.name)}</b><small>${X(s.desc)}</small><em>${best[i + '-' + menuLv] ? '🏆 ' + l.best + ' : ' + fmt(best[i + '-' + menuLv]) : ''}</em></div></button>`).join('')}</div>
       <h3>${l.pickLv}</h3>
       <div class="lvs">${[0, 1, 2].map(i => `<button class="lv${i === menuLv ? ' on' : ''}"><b>${'★'.repeat(i + 1)} ${l.lv[i]}</b><small>${l.lvd[i]}</small></button>`).join('')}</div>
-      <button class="btn gold big" id="go">${l.play} →</button></div>`;
+      <div class="row"><button class="btn big" id="lbBtn">🏆 ${l.lbTitle || ""}</button><button class="btn gold big" id="go">${l.play} →</button></div></div>`;
     document.querySelectorAll('.sc').forEach((b, i) => { b.querySelector('canvas').getContext('2d').drawImage(thumbs[i], 0, 0); b.onclick = () => { sfx.click(); menuSc = i; renderMenu(); }; });
     document.querySelectorAll('.lv').forEach((b, i) => { b.onclick = () => { sfx.click(); menuLv = i; renderMenu(); }; });
     $('#go').onclick = () => { sfx.click(); startGame(menuSc, menuLv); };
+    $('#lbBtn').onclick = () => { sfx.click(); if (window.Leaderboard) window.Leaderboard.open(menuSc, menuLv); };
   }
   function toMenu() {
     stopAmb(); stopMorse(); G = null;
@@ -161,7 +162,7 @@
     const S = SC[sc], LVL = LV[lvl];
     let perm = SYM.slice();
     if (lvl > 0) do { perm = shuffle(SYM); } while (perm.every((v, i) => v === SYM[i]));
-    G = { sc, S, lvl, L: LVL, v: {}, f: {}, inv: [], held: null, docs: [], notes: {}, noteOrder: [], code: {}, found: {}, perm, dial: [0, 0, 0, 0, 0, 0],
+    G = { sc, S, lvl, cfg: LVL, v: {}, f: {}, inv: [], held: null, docs: [], notes: {}, noteOrder: [], code: {}, found: {}, perm, dial: [0, 0, 0, 0, 0, 0],
       left: LVL.time, hints: LVL.hints, used: 0, state: 'intro', view: S.order[0], ps: {}, modal: null, last: 0, openAt: 0, fade: 0, jTab: 'docs',
       mword: S.morse ? S.morse[lvl] : null };
     SYM.forEach(s => { G.code[s] = rand(10); });
@@ -368,7 +369,7 @@
   }
   function fail(msg) {
     sfx.bad();
-    const pen = G.L.pen; if (pen) { G.left -= pen; showTime(); }
+    const pen = G.cfg.pen; if (pen) { G.left -= pen; showTime(); }
     const fb = $('#fb'); if (fb) fb.textContent = (msg || tr('wrong')) + (pen ? '  −' + pen + ' s' : '');
     const pn = $('#mpanel'); pn.classList.remove('shake'); void pn.offsetWidth; pn.classList.add('shake');
   }
@@ -452,7 +453,7 @@
       hint: p => L().rules[p.rule]
     },
     cards: {
-      init(p) { Object.assign(p, genCards(G.L.cards)); p.pick = null; },
+      init(p) { Object.assign(p, genCards(G.cfg.cards)); p.pick = null; },
       render(p, box) {
         const same = (a, b) => a && b && a.r === b.r && a.s === b.s;
         box.innerHTML = `<div class="cardrows">${SUITS.map((s, si) => {
@@ -670,14 +671,14 @@
     return cv.toDataURL('image/jpeg', .85);
   }
 
-  window.GameKit = { get G() { return G; }, W, tr, L, X, solve, fail, beep, sfx, esc, norm, inputRow, bindInput, slideImage, api, ps, renderPz, $ };
+  window.GameKit = { fmt, get lang() { return lang; }, get G() { return G; }, W, tr, L, X, solve, fail, beep, sfx, esc, norm, inputRow, bindInput, slideImage, api, ps, renderPz, $ };
 
   // Signal Morse joué dans la fenêtre (lampe + son)
   let M = null, mOsc = [];
   function stopMorse() { mOsc.forEach(o => { try { o.stop(); } catch { /* déjà arrêté */ } }); mOsc = []; M = null; const l = $('#lamp'); if (l) l.classList.remove('on'); }
   function playMorse() {
     stopMorse();
-    const unit = G.L.unit, seq = G.mseq; let at = .2;
+    const unit = G.cfg.unit, seq = G.mseq; let at = .2;
     seq.forEach(([on, d]) => { if (on) { const o = beep(620, d * unit / 1000, 'sine', .12, at); if (o) mOsc.push(o); } at += d * unit / 1000; });
     M = { t0: performance.now() + 200, seq, unit };
   }
@@ -733,10 +734,10 @@
   function finish(won) {
     G.state = won ? 'won' : 'lost'; G.modal = null; $('#modal').hidden = true; $('#hs').innerHTML = ''; stopMorse(); stopSimon(); stopAmb();
     if (won) {
-      const used = Math.round(G.L.time - G.left), best = store.get('mt-best2', {}), key = G.sc + '-' + G.lvl;
+      const used = Math.round(G.cfg.time - G.left), best = store.get('mt-best2', {}), key = G.sc + '-' + G.lvl;
       G.usedTime = used; G.newBest = !best[key] || used < best[key];
       if (G.newBest) { best[key] = used; store.set('mt-best2', best); }
-      G.stars = (G.used <= 1 && G.left > G.L.time * .4) ? 3 : (G.left > G.L.time * .15 ? 2 : 1);
+      G.stars = (G.used <= 1 && G.left > G.cfg.time * .4) ? 3 : (G.left > G.cfg.time * .15 ? 2 : 1);
     } else sfx.lose();
     $('#end').hidden = false; renderEnd();
   }
@@ -745,11 +746,12 @@
     $('#end').innerHTML = won
       ? `<div class="panel story"><div class="stars">${[1, 2, 3].map(n => `<i class="${n <= G.stars ? 'on' : ''}">★</i>`).join('')}</div><h2>${l.win}</h2><p>${X(G.S.outro)}</p>
           <div class="stats"><div><b>${fmt(G.usedTime)}</b>${l.time}</div><div><b>${G.used}</b>${l.hintsUsed}</div><div><b>${'★'.repeat(G.lvl + 1)}</b>${l.lv[G.lvl]}</div></div>
-          ${G.newBest ? `<p class="nb">🏆 ${l.newBest}</p>` : ''}
+          ${G.newBest ? `<p class="nb">🏆 ${l.newBest}</p>` : ''}<div id="lbWin"></div>
           <div class="row"><button class="btn" id="emenu">${l.menu}</button><button class="btn gold big" id="eagain">${l.again}</button></div></div>`
       : `<div class="panel story"><div class="ico">⏳</div><h2>${l.lose}</h2><p>${l.loseSub}</p>
           <div class="row"><button class="btn" id="emenu">${l.menu}</button><button class="btn gold big" id="eagain">${l.again}</button></div></div>`;
     $('#emenu').onclick = toMenu;
+    if (won && window.Leaderboard) window.Leaderboard.onWin(G, $('#lbWin'));
     $('#eagain').onclick = () => { const { sc, lvl } = G; $('#hud').hidden = true; $('#gameui').hidden = true; document.body.classList.add('nohud'); startGame(sc, lvl); };
   }
   let quitArm = 0;
@@ -768,7 +770,7 @@
     if (G) {
       const mi = G.S.pzs.morse ? 'morse' : null;
       const st = { f: G.f, v: G.v, code: G.code, held: G.held, mx: G.mx, my: G.my, inv: G.inv,
-        morse: G.mseq ? (api.solved(mi) ? 1 : morseOn(G.mseq, G.L.unit * 1.25, now)) : (G.f.signal ? 1 : 0),
+        morse: G.mseq ? (api.solved(mi) ? 1 : morseOn(G.mseq, G.cfg.unit * 1.25, now)) : (G.f.signal ? 1 : 0),
         glyphWord: G.S.id === 'temple' ? NUMS[lang][G.code['▲']] : '' };
       try { window.Scenes[G.S.views[G.view].scene](ctx, t, st); } catch (e) { if (!frame.err) { frame.err = 1; console.error(e); } }
       ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
@@ -820,5 +822,5 @@
 
   makeThumbs(); document.documentElement.lang = lang; refresh(); requestAnimationFrame(frame);
   // Accès de débogage pour les tests automatisés
-  window.__game = { get G() { return G; }, startGame, solve: id => solve(ps(id)), ps, goView, api };
+  window.__game = { finish, get G() { return G; }, startGame, solve: id => solve(ps(id)), ps, goView, api };
 })();

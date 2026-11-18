@@ -450,6 +450,12 @@ table.sched{margin:0 auto 10px;border-collapse:collapse;background:#f6f3ea;color
 .tel{background:#f2e8a8;color:#2a2118;font:700 15px/2.1 Consolas,"Courier New",monospace;border-radius:6px;padding:12px 16px;max-width:620px;margin:0 auto}
 .gap{border:none;border-bottom:2px solid #2a2118;background:transparent;font:inherit;color:#7a1a10;padding:0 6px;min-width:70px}.gap.cur{background:#fff6c0}.gap.on{color:#2e7d32}
 .wb:disabled{opacity:.3}
+
+/* ---------- Classement ---------- */
+#lbModal{z-index:20}
+table.lb{width:100%;border-collapse:collapse;margin:8px 0;font-size:15px}table.lb th{color:var(--gold);font-weight:600;text-align:left;padding:6px 8px;border-bottom:1px solid #3a3f55}
+table.lb td{padding:6px 8px;border-bottom:1px solid #22263a}table.lb td:first-child{font-size:18px;width:52px}table.lb td:nth-child(3){font:700 15px Consolas,monospace}table.lb tr.me td{background:rgba(232,196,104,.15);color:var(--gold)}
+.lbform{margin:12px auto;max-width:520px}.lbform label{display:block;text-align:center;font-weight:600;color:var(--gold)}
 </style>
 </head>
 <body class="nohud">
@@ -484,6 +490,7 @@ table.sched{margin:0 auto 10px;border-collapse:collapse;background:#f6f3ea;color
 </section>
 <section id="end" class="screen" hidden></section>
 <div id="toasts"></div>
+<script src="config.js"></script>
 <script src="logic.js"></script>
 <script src="i18n.js"></script>
 <script src="i18n2.js"></script>
@@ -501,5 +508,6 @@ table.sched{margin:0 auto 10px;border-collapse:collapse;background:#f6f3ea;color
 <script src="widgets3.js"></script>
 <script src="widgets4.js"></script>
 <script src="widgets5.js"></script>
+<script src="leaderboard.js"></script>
 </body>
 </html>
