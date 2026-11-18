@@ -17,3 +17,7 @@ drop policy if exists "lecture publique" on public.scores;
 create policy "lecture publique" on public.scores for select to anon using (true);
 drop policy if exists "ajout public" on public.scores;
 create policy "ajout public" on public.scores for insert to anon with check (true);
+
+-- Les nouveaux projets Supabase ne donnent plus de droits par défaut au rôle public : on autorise seulement lire et ajouter.
+grant select, insert on public.scores to anon;
+grant usage, select on sequence public.scores_id_seq to anon;
