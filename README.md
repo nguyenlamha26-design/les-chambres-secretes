@@ -1,10 +1,10 @@
 # Les Chambres Secrètes · The Secret Chambers · Mật Thất
 
-Jeu d'évasion dans le navigateur : explore, fouille, déduis. 5 scénarios, 3 niveaux de difficulté, 51 énigmes de 44 types différents, en français, anglais et vietnamien.
+Jeu d'évasion dans le navigateur : explore, fouille, déduis. 7 scénarios, 3 niveaux de difficulté, 65 énigmes de 58 types différents, en français, anglais et vietnamien.
 
-Browser escape game: explore, search, deduce. 5 scenarios, 3 difficulty levels, 51 puzzles of 44 different kinds, in French, English and Vietnamese.
+Browser escape game: explore, search, deduce. 7 scenarios, 3 difficulty levels, 65 puzzles of 58 different kinds, in French, English and Vietnamese.
 
-Trò chơi thoát phòng trên trình duyệt: khám phá, lục tìm, suy luận. 5 kịch bản, 3 cấp độ, 51 câu đố thuộc 44 loại khác nhau, bằng tiếng Pháp, tiếng Anh và tiếng Việt.
+Trò chơi thoát phòng trên trình duyệt: khám phá, lục tìm, suy luận. 7 kịch bản, 3 cấp độ, 65 câu đố thuộc 58 loại khác nhau, bằng tiếng Pháp, tiếng Anh và tiếng Việt.
 
 ## Scénarios
 
