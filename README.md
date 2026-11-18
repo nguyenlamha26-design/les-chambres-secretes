@@ -1,10 +1,10 @@
 # Les Chambres Secrètes · The Secret Chambers · Mật Thất
 
-Jeu d'évasion dans le navigateur : explore, fouille, déduis. 7 scénarios, 3 niveaux de difficulté, 65 énigmes de 58 types différents, en français, anglais et vietnamien.
+Jeu d'évasion dans le navigateur : explore, fouille, déduis. 9 scénarios, 3 niveaux de difficulté, 77 énigmes de 70 types différents, en français, anglais et vietnamien.
 
-Browser escape game: explore, search, deduce. 7 scenarios, 3 difficulty levels, 65 puzzles of 58 different kinds, in French, English and Vietnamese.
+Browser escape game: explore, search, deduce. 9 scenarios, 3 difficulty levels, 77 puzzles of 70 different kinds, in French, English and Vietnamese.
 
-Trò chơi thoát phòng trên trình duyệt: khám phá, lục tìm, suy luận. 7 kịch bản, 3 cấp độ, 65 câu đố thuộc 58 loại khác nhau, bằng tiếng Pháp, tiếng Anh và tiếng Việt.
+Trò chơi thoát phòng trên trình duyệt: khám phá, lục tìm, suy luận. 9 kịch bản, 3 cấp độ, 77 câu đố thuộc 70 loại khác nhau, bằng tiếng Pháp, tiếng Anh và tiếng Việt.
 
 ## Scénarios
 
@@ -13,6 +13,10 @@ Trò chơi thoát phòng trên trình duyệt: khám phá, lục tìm, suy luậ
 - 🐊 **Le temple du crocodile** — des ruines oubliées au cœur de la jungle
 - 🛰️ **Station Aurore** — une station orbitale en alerte
 - 🕵️ **L'emblème volé** — une enquête dans les rues enneigées de Rimouski
+- 🏮 **La maison des lanternes** — Hội An, la nuit de la fête de la mi-automne
+- 🚂 **Le train de nuit** — bloqué par la tempête entre Rimouski et Mont-Joli
+- 🎃 **Le manoir hanté** — Halloween, un pari et un fantôme joueur
+- 🎄 **L’atelier des lutins** — le soir de Noël, au pôle Nord
 
 ## Jouer
 

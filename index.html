@@ -85,7 +85,7 @@ body.nohud #stage{width:min(100vw,calc(100dvh*16/9))}
 #menu h3{font-size:15px;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);margin:16px 0 10px;opacity:.85}
 .langs{display:flex;justify-content:center;gap:6px;margin-bottom:8px}
 .langs .lg{font-size:15px;padding:5px 12px}
-.scs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.scs{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
 .sc{padding:0;background:#11131b;border:2px solid #2a2d3b;border-radius:14px;overflow:hidden;text-align:left;transition:transform .2s,border-color .2s,box-shadow .2s;animation:up .7s both}
 .sc:nth-child(2){animation-delay:.07s}.sc:nth-child(3){animation-delay:.14s}.sc:nth-child(4){animation-delay:.21s}
 .sc canvas{display:block;width:100%;aspect-ratio:16/9;filter:saturate(.8) brightness(.85);transition:filter .2s}
@@ -456,6 +456,33 @@ table.sched{margin:0 auto 10px;border-collapse:collapse;background:#f6f3ea;color
 table.lb{width:100%;border-collapse:collapse;margin:8px 0;font-size:15px}table.lb th{color:var(--gold);font-weight:600;text-align:left;padding:6px 8px;border-bottom:1px solid #3a3f55}
 table.lb td{padding:6px 8px;border-bottom:1px solid #22263a}table.lb td:first-child{font-size:18px;width:52px}table.lb td:nth-child(3){font:700 15px Consolas,monospace}table.lb tr.me td{background:rgba(232,196,104,.15);color:var(--gold)}
 .lbform{margin:12px auto;max-width:520px}.lbform label{display:block;text-align:center;font-weight:600;color:var(--gold)}
+
+/* ---------- Halloween et Noël ---------- */
+.cups{position:relative;height:130px;width:min(480px,86vw);margin:20px auto 0}
+.cup{position:absolute;top:10px;width:calc(100% / var(--n));height:110px;border:none;background:none;font-size:70px;padding:0;z-index:2}
+.ball{position:absolute;top:84px;font-size:28px;transition:left .3s,opacity .3s;z-index:1}
+.ghosts{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:8px;width:min(340px,76vw);margin:0 auto}
+.gh{aspect-ratio:1;border-radius:50%;border:3px solid #3a3050;background:radial-gradient(circle,#2a2040,#0e0a18);font-size:clamp(24px,6vw,44px);padding:0}.gh.up{animation:pop .2s;border-color:#c8b8ff}
+.pins{display:flex;justify-content:center;gap:12px}.pin{display:flex;flex-direction:column;align-items:center;gap:4px}.pin .btn{padding:2px 12px}
+.pinbar{position:relative;width:34px;height:140px;background:#1a1d22;border:2px solid #4a4f58;border-radius:6px;display:flex;align-items:flex-end}.pinbar i{display:block;width:100%;background:linear-gradient(#e8c468,#9a7a2a);border-radius:4px}.pinbar b{position:absolute;top:4px;width:100%;text-align:center;font:700 14px Consolas,monospace}
+.pin em{font-style:normal;font-size:22px;color:#ff8a8a;min-height:28px}.pin em.ok{color:#62d48a}
+.web{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:4px;width:min(360px,76vw);margin:0 auto;background:radial-gradient(circle,#2a2a3a,#0e0e18);padding:8px;border-radius:12px}
+.wb2{aspect-ratio:1;border-radius:50%;border:1px solid rgba(220,220,240,.35);background:transparent;color:#e8e8f0;font:700 18px Consolas,monospace;padding:0}.wb2.can{border-color:#c8b8ff;background:rgba(200,184,255,.1)}.wb2.on{background:#c8b8ff;color:#1a1030}.wb2.tip{outline:3px dashed #ff8a8a}
+.graves{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:3px;width:min(380px,78vw);margin:0 auto}
+.gv2{aspect-ratio:1;border:none;border-radius:8px 8px 3px 3px;background:#4a4a58;font:700 clamp(12px,2.6vw,20px) Consolas,monospace;padding:0;color:#e8e8f0}.gv2.op{background:#1e2a1a;color:#9dffb8}.gv2.fl{background:#5a3a3a}
+.outfit{display:flex;flex-direction:column;gap:8px;align-items:center}.outfit>div{display:flex;align-items:center;gap:10px}.outfit b{width:110px;text-align:right;color:var(--gold)}.outfit .btn{font-size:26px;padding:4px 10px}.outfit .btn.on{border-color:var(--gold);background:#2a2416}
+.bells{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.bell{display:flex;flex-direction:column;align-items:center;gap:6px}.bell.used{opacity:.5}.bell.tip .ring{outline:3px dashed #ff8a8a}
+.ring{font-size:44px;background:none;border:none;padding:0;position:relative}.ring small{position:absolute;bottom:-4px;right:-6px;font-size:12px;color:var(--dim)}.ring.swing{animation:swing .5s}
+@keyframes swing{25%{transform:rotate(18deg)}75%{transform:rotate(-18deg)}}
+svg.garl{display:block;width:min(340px,76vw);margin:0 auto}.garl line{stroke:#5a6a5a;stroke-width:.8}.garl line.bad{stroke:#ff5a5a;stroke-width:1.4}.garl .bl{cursor:pointer}.garl .fx{cursor:default}.garl .fx circle:first-child{stroke:#fff;stroke-width:.8}
+.ice{display:grid;grid-template-columns:repeat(var(--n),1fr);width:min(340px,74vw);margin:0 auto;background:linear-gradient(135deg,#d8f0fc,#9ad0ee);border:4px solid #fff;border-radius:10px}
+.ic{aspect-ratio:1;display:grid;place-items:center;font-size:clamp(14px,3.6vw,28px);border:1px solid rgba(255,255,255,.4)}.ic.w{background:rgba(30,90,40,.15)}
+.prog2{display:flex;justify-content:center;gap:4px;flex-wrap:wrap;margin-top:10px;min-height:34px}.prog2 span{background:#1d2130;border:1px solid var(--gold);border-radius:6px;padding:2px 8px;font-size:18px}.btn.ar{font-size:20px;padding:6px 14px}
+.recipe{width:fit-content;margin:0 auto 8px;background:#fff6e0;color:#3a2410;border-radius:8px;padding:10px 18px;font:16px/1.6 Georgia,serif;box-shadow:0 6px 16px #0006}
+.advent{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px;margin:8px 0}.advent span{background:#a8301a;color:#fff6d8;border:2px solid #f2d060;border-radius:8px;padding:8px 12px;font:700 20px Georgia,serif;position:relative}
+.advent span small{position:absolute;top:-10px;left:4px;font-size:11px;background:#2e6a3a;border-radius:6px;padding:0 4px}.advent .d0{background:#2e6a3a}.advent .q{background:#f2d060;color:#6a1a10}.advent i{font-style:normal;color:var(--gold)}
+.net{display:grid;justify-content:center;gap:2px;margin:6px auto}.net span{display:grid;place-items:center;background:#e8f0ff;border:2px dashed #2e6fd1;border-radius:4px;font-size:28px}.net span.q{background:#f2d060;border-style:solid}
+.btn.cf{font-size:26px;padding:4px 14px}
 </style>
 </head>
 <body class="nohud">
@@ -497,17 +524,20 @@ table.lb td{padding:6px 8px;border-bottom:1px solid #22263a}table.lb td:first-ch
 <script src="content.js"></script>
 <script src="content5.js"></script>
 <script src="content7.js"></script>
+<script src="content8.js"></script>
 <script src="content6.js"></script>
 <script src="scenes.js"></script>
 <script src="scenes2.js"></script>
 <script src="scenes3.js"></script>
 <script src="scenes4.js"></script>
 <script src="scenes5.js"></script>
+<script src="scenes6.js"></script>
 <script src="game.js"></script>
 <script src="widgets2.js"></script>
 <script src="widgets3.js"></script>
 <script src="widgets4.js"></script>
 <script src="widgets5.js"></script>
+<script src="widgets6.js"></script>
 <script src="leaderboard.js"></script>
 </body>
 </html>
