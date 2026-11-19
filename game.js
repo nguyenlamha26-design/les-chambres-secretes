@@ -764,6 +764,8 @@
   // ---------------- Boucle d'animation ----------------
   const cv = $('#cv'), ctx = cv.getContext('2d');
   const R = i => { const x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+  let menuMx = null, menuMy = null;
+  document.addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(); menuMx = (e.clientX - r.left) / r.width * 1600; menuMy = (e.clientY - r.top) / r.height * 900; });
   function frame(now) {
     const t = now / 1000;
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
@@ -772,8 +774,10 @@
       const st = { f: G.f, v: G.v, code: G.code, held: G.held, mx: G.mx, my: G.my, inv: G.inv,
         morse: G.mseq ? (api.solved(mi) ? 1 : morseOn(G.mseq, G.cfg.unit * 1.25, now)) : (G.f.signal ? 1 : 0),
         glyphWord: G.S.id === 'temple' ? NUMS[lang][G.code['▲']] : '' };
+      if (window.FX) window.FX.camera(ctx, t, G.mx, G.my, now - G.fade);
       try { window.Scenes[G.S.views[G.view].scene](ctx, t, st); } catch (e) { if (!frame.err) { frame.err = 1; console.error(e); } }
       ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+      if (window.FX) window.FX.grade(ctx, G.S.id);
       // Obscurité et lumière portée
       if (isDark()) {
         if (!canSee()) { ctx.fillStyle = 'rgba(0,0,0,.965)'; ctx.fillRect(0, 0, 1600, 900); }
@@ -792,6 +796,15 @@
         ctx.save(); ctx.globalAlpha = a; ctx.globalCompositeOperation = 'lighter'; ctx.strokeStyle = '#fff6c8'; ctx.lineWidth = 2.5;
         ctx.beginPath(); ctx.moveTo(x - s, y); ctx.lineTo(x + s, y); ctx.moveTo(x, y - s); ctx.lineTo(x, y + s); ctx.stroke(); ctx.restore();
       });
+      // Rendu final : halo, particules, lueur de survol, grain
+      if (window.FX) {
+        window.FX.bloom(ctx, cv, window.FX.theme(G.S.id).bloom);
+        if (G.state === 'play' && canSee() && G.mx != null && $('#modal').hidden) {
+          const h = G.S.hs.find((h, k) => h.v === G.view && (!h.show || h.show(G)) && (!h.hid || G.f['seen_' + k]) && G.mx >= h.r[0] && G.mx <= h.r[0] + h.r[2] && G.my >= h.r[1] && G.my <= h.r[1] + h.r[3]);
+          window.FX.hover(ctx, t, h && h.r);
+        }
+        window.FX.particles(ctx, t, G.S.id); window.FX.grain(ctx);
+      }
       // Fondu au changement de vue
       const fa = 1 - (now - G.fade) / 450; if (fa > 0) { ctx.fillStyle = `rgba(0,0,0,${fa})`; ctx.fillRect(0, 0, 1600, 900); }
       if (G.state === 'play') {
@@ -815,7 +828,9 @@
       }
       lampTick(now);
     } else {
+      if (window.FX) window.FX.camera(ctx, t, menuMx, menuMy, 1e9);
       try { window.Scenes[SC[menuSc].views.a.scene](ctx, t, { f: {}, v: {}, code: {}, inv: [], morse: 0 }); } catch (e) { if (!frame.err) { frame.err = 1; console.error(e); } }
+      if (window.FX) { window.FX.grade(ctx, SC[menuSc].id); window.FX.bloom(ctx, cv, window.FX.theme(SC[menuSc].id).bloom); window.FX.particles(ctx, t, SC[menuSc].id); }
     }
     requestAnimationFrame(frame);
   }
