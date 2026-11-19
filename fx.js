@@ -18,7 +18,10 @@
     halloween: { tint: '#c890ff', ta: .16, lift: .12, bloom: .55, p: 'wisp', pc: '#d8c8ff', bokeh: '#ff9a3a' },
     xmas: { tint: '#ffd0a0', ta: .12, lift: .08, bloom: .55, p: 'snow', pc: '#ffffff', bokeh: '#ffd040' },
     games: { tint: '#ffb080', ta: .12, lift: .08, bloom: .5, p: 'dust', pc: '#fff0d8', bokeh: '#ff9a4a' },
-    empty: { tint: '#9a8aff', ta: .14, lift: .10, bloom: .6, p: 'spark', pc: '#d8d0ff', bokeh: '#ff4aa0' }
+    empty: { tint: '#9a8aff', ta: .14, lift: .10, bloom: .6, p: 'spark', pc: '#d8d0ff', bokeh: '#ff4aa0' },
+    magic: { tint: '#b89aff', ta: .14, lift: .10, bloom: .6, p: 'firefly', pc: '#e8d8ff', bokeh: '#8a6aff' },
+    mafia: { tint: '#ffb070', ta: .14, lift: .08, bloom: .5, p: 'dust', pc: '#ffe0b0', bokeh: '#ffb060' },
+    philo: { tint: '#ffd8a0', ta: .10, lift: .06, bloom: .45, p: 'dust', pc: '#fff4d8', bokeh: '#ffe0a0' }
   };
   const theme = id => THEME[id] || THEME.class;
 
