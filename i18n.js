@@ -2,9 +2,10 @@
 window.T = {
   fr: {
     title: 'Les Chambres Secrètes',
-    tag: "Jeu d'évasion — explore, fouille, déduis. 9 scénarios, 3 niveaux.",
+    tag: "Jeu d'évasion — explore, fouille, déduis. 11 scénarios, 3 niveaux.",
     pickSc: 'Choisis ton scénario', pickLv: 'Difficulté',
     lv: ['Facile', 'Normal', 'Expert'],
+    hard: 'Corsé', hardd: '{t} min · {h} indice(s) · erreur = −{p} s · énigmes plus difficiles',
     lvd: ['60 min · 8 indices · les cachettes scintillent', '45 min · 5 indices · erreur = −20 s', '30 min · 2 indices · erreur = −45 s'],
     play: 'Entrer', best: 'Record', begin: 'Commencer',
     hint: 'Indice', noHint: "Tu n'as plus d'indices !", noMoreHint: "Pas d'autre indice pour cette énigme.", noGoal: 'Explore encore : fouille chaque recoin, examine tes objets.',
@@ -66,9 +67,10 @@ window.T = {
 
   en: {
     title: 'The Secret Chambers',
-    tag: 'Escape game — explore, search, deduce. 9 scenarios, 3 levels.',
+    tag: 'Escape game — explore, search, deduce. 11 scenarios, 3 levels.',
     pickSc: 'Choose your scenario', pickLv: 'Difficulty',
     lv: ['Easy', 'Normal', 'Expert'],
+    hard: 'Tough', hardd: '{t} min · {h} hint(s) · mistake = −{p} s · harder puzzles',
     lvd: ['60 min · 8 hints · hiding spots sparkle', '45 min · 5 hints · mistake = −20 s', '30 min · 2 hints · mistake = −45 s'],
     play: 'Enter', best: 'Best', begin: 'Begin',
     hint: 'Hint', noHint: 'No hints left!', noMoreHint: 'No further hint for this puzzle.', noGoal: 'Keep exploring: search every corner, examine your items.',
@@ -130,9 +132,10 @@ window.T = {
 
   vi: {
     title: 'Mật Thất',
-    tag: 'Trò chơi thoát phòng — khám phá, lục tìm, suy luận. 9 kịch bản, 3 cấp độ.',
+    tag: 'Trò chơi thoát phòng — khám phá, lục tìm, suy luận. 11 kịch bản, 3 cấp độ.',
     pickSc: 'Chọn kịch bản', pickLv: 'Độ khó',
     lv: ['Dễ', 'Vừa', 'Khó'],
+    hard: 'Khó nhằn', hardd: '{t} phút · {h} gợi ý · sai = −{p} giây · câu đố khó hơn',
     lvd: ['60 phút · 8 gợi ý · chỗ giấu đồ lấp lánh', '45 phút · 5 gợi ý · sai = −20 giây', '30 phút · 2 gợi ý · sai = −45 giây'],
     play: 'Vào phòng', best: 'Kỷ lục', begin: 'Bắt đầu',
     hint: 'Gợi ý', noHint: 'Bạn đã hết gợi ý!', noMoreHint: 'Câu đố này không còn gợi ý nào nữa.', noGoal: 'Hãy khám phá tiếp: lục từng góc, xem kỹ đồ vật của bạn.',

@@ -141,7 +141,7 @@
       <h1>${l.title}</h1><p class="tagline">${l.tag}</p>
       <h3>${l.pickSc}</h3>
       <div class="scs">${SC.map((s, i) => `<button class="sc${i === menuSc ? ' on' : ''}"><canvas width="400" height="225"></canvas>
-        <div class="sct"><b>${s.icon} ${X(s.name)}</b><small>${X(s.desc)}</small><em>${best[i + '-' + menuLv] ? '🏆 ' + l.best + ' : ' + fmt(best[i + '-' + menuLv]) : ''}</em></div></button>`).join('')}</div>
+        <div class="sct">${s.hard ? `<span class="hardtag">💀 ${l.hard || ''}</span>` : ''}<b>${s.icon} ${X(s.name)}</b><small>${X(s.desc)}</small><em>${best[i + '-' + menuLv] ? '🏆 ' + l.best + ' : ' + fmt(best[i + '-' + menuLv]) : ''}</em></div></button>`).join('')}</div>
       <h3>${l.pickLv}</h3>
       <div class="lvs">${[0, 1, 2].map(i => `<button class="lv${i === menuLv ? ' on' : ''}"><b>${'★'.repeat(i + 1)} ${l.lv[i]}</b><small>${l.lvd[i]}</small></button>`).join('')}</div>
       <div class="row"><button class="btn big" id="lbBtn">🏆 ${l.lbTitle || ""}</button><button class="btn gold big" id="go">${l.play} →</button></div></div>`;
@@ -159,7 +159,7 @@
 
   // ---------------- Partie ----------------
   function startGame(sc, lvl) {
-    const S = SC[sc], LVL = LV[lvl];
+    const S = SC[sc], LVL = S.hard ? { ...LV[lvl], time: Math.round(LV[lvl].time * .75), hints: Math.max(1, LV[lvl].hints - 2), pen: LV[lvl].pen + 15 } : LV[lvl];
     let perm = SYM.slice();
     if (lvl > 0) do { perm = shuffle(SYM); } while (perm.every((v, i) => v === SYM[i]));
     G = { sc, S, lvl, cfg: LVL, v: {}, f: {}, inv: [], held: null, docs: [], notes: {}, noteOrder: [], code: {}, found: {}, perm, dial: [0, 0, 0, 0, 0, 0],
@@ -175,7 +175,7 @@
   function renderIntro() {
     $('#intro').innerHTML = `<div class="panel story"><div class="ico">${G.S.icon}</div><h2>${X(G.S.name)}</h2><p>${X(G.S.intro)}</p>
       <p class="tip">🧭 ${tr('controls')}</p>
-      <p style="color:var(--gold);font-size:15px">${'★'.repeat(G.lvl + 1)} ${L().lv[G.lvl]} — ${L().lvd[G.lvl]}</p>
+      <p style="color:var(--gold);font-size:15px">${'★'.repeat(G.lvl + 1)} ${L().lv[G.lvl]} — ${G.S.hard ? `<b class="hardtag">💀 ${L().hard}</b> ${L().hardd.replace('{t}', Math.round(G.cfg.time / 60)).replace('{h}', G.cfg.hints).replace('{p}', G.cfg.pen)}` : L().lvd[G.lvl]}</p>
       <div class="row"><button class="btn" id="back">← ${L().menu}</button><button class="btn gold big" id="begin">${L().begin}</button></div></div>`;
     $('#back').onclick = toMenu;
     $('#begin').onclick = () => {

@@ -16,7 +16,9 @@
     lantern: { tint: '#ffa060', ta: .16, lift: .10, bloom: .6, p: 'ember', pc: '#ffc070', bokeh: '#ff7040' },
     train: { tint: '#ffc080', ta: .12, lift: .10, bloom: .5, p: 'dust', pc: '#ffe6c0', bokeh: '#ffd8a0' },
     halloween: { tint: '#c890ff', ta: .16, lift: .12, bloom: .55, p: 'wisp', pc: '#d8c8ff', bokeh: '#ff9a3a' },
-    xmas: { tint: '#ffd0a0', ta: .12, lift: .08, bloom: .55, p: 'snow', pc: '#ffffff', bokeh: '#ffd040' }
+    xmas: { tint: '#ffd0a0', ta: .12, lift: .08, bloom: .55, p: 'snow', pc: '#ffffff', bokeh: '#ffd040' },
+    games: { tint: '#ffb080', ta: .12, lift: .08, bloom: .5, p: 'dust', pc: '#fff0d8', bokeh: '#ff9a4a' },
+    empty: { tint: '#9a8aff', ta: .14, lift: .10, bloom: .6, p: 'spark', pc: '#d8d0ff', bokeh: '#ff4aa0' }
   };
   const theme = id => THEME[id] || THEME.class;
 
