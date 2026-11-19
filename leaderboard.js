@@ -18,6 +18,7 @@
   const tr = (k, v) => K.tr(k, v), esc = s => K.esc(s), $ = s => document.querySelector(s);
   const store = { get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* indisponible */ } } };
   const clean = s => String(s).replace(/[\u0000-\u001f<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, 20);
+  const same = (a, b) => a.name === b.name && new Date(a.created_at).getTime() === new Date(b.created_at).getTime();
   const byScore = (a, b) => a.seconds - b.seconds || a.hints - b.hints || String(a.created_at).localeCompare(String(b.created_at));
 
   // ---------- Stockage ----------
@@ -43,7 +44,7 @@
     if (!rows.length) return `<p class="cnt">${tr('empty')}</p>`;
     const medal = i => ['🥇', '🥈', '🥉'][i] || (i + 1);
     return `<table class="lb"><tr><th>${tr('rank')}</th><th>${tr('player')}</th><th>${tr('time')}</th><th>${tr('hints')}</th><th>${tr('date')}</th></tr>${rows.slice(0, 10).map((r, i) =>
-      `<tr class="${mine && r.created_at === mine.created_at && r.name === mine.name ? 'me' : ''}"><td>${medal(i)}</td><td>${esc(r.name)}</td><td>${K.fmt(r.seconds)}</td><td>${r.hints}</td><td>${new Date(r.created_at).toLocaleDateString(K.lang)}</td></tr>`).join('')}</table>`;
+      `<tr class="${mine && same(r, mine) ? 'me' : ''}"><td>${medal(i)}</td><td>${esc(r.name)}</td><td>${K.fmt(r.seconds)}</td><td>${r.hints}</td><td>${new Date(r.created_at).toLocaleDateString(K.lang)}</td></tr>`).join('')}</table>`;
   }
 
   // ---------- Après une victoire ----------
@@ -52,8 +53,10 @@
     if (G.lbRow) return showResult(G, el);
     el.innerHTML = `<div class="lbform"><label for="lbName">🏆 ${tr('yourName')}</label><div class="row"><input id="lbName" class="ans" maxlength="20" autocomplete="nickname" value="${esc(store.get('mt-name', ''))}"><button class="btn gold" id="lbSave">${tr('save')}</button><button class="btn" id="lbSkip">${tr('skip')}</button></div></div>`;
     const inp = $('#lbName'); inp.style.textTransform = 'none'; inp.focus();
+    let busy = false;
     const go = async () => {
       const name = clean(inp.value); if (!name) { inp.focus(); return; }
+      if (busy) return; busy = true;
       store.set('mt-name', name); $('#lbSave').disabled = true;
       G.lbRow = { name, scenario: G.S.id, level: G.lvl, seconds: Math.max(1, G.usedTime), hints: G.used, created_at: new Date().toISOString() };
       G.lbOnline = await submit(G.lbRow);
@@ -65,8 +68,8 @@
   async function showResult(G, el) {
     el.innerHTML = `<p class="cnt">${tr('loading')}</p>`;
     const { rows, online: on } = await fetchAll(G.S.id, G.lvl), me = G.lbRow;
-    if (!rows.some(r => r.name === me.name && r.created_at === me.created_at)) { rows.push(me); rows.sort(byScore); }
-    const r = rows.findIndex(x => x.name === me.name && x.created_at === me.created_at) + 1;
+    if (!rows.some(x => same(x, me))) { rows.push(me); rows.sort(byScore); }
+    const r = rows.findIndex(x => same(x, me)) + 1;
     el.innerHTML = `<p class="nb">${tr(r === 1 ? 'first' : 'saved', { n: esc(me.name), r, t: rows.length })}</p>${!G.lbOnline && online ? `<p class="cnt">${tr('offline')}</p>` : ''}${table(rows, me)}<p class="cnt">${on ? '🌍 ' + tr('global') : '💻 ' + tr('local')}</p>`;
   }
 

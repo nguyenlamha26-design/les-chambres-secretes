@@ -87,12 +87,12 @@
     const el = document.createElement('div'); el.className = 'toast'; el.textContent = msg; $('#toasts').appendChild(el);
     setTimeout(() => { el.classList.add('out'); setTimeout(() => el.remove(), 400); }, 3400);
   }
-  let sayT = 0;
+  // La bulle reste affichée jusqu'à ce qu'on la ferme (✕, clic sur la bulle ou Échap) ou qu'un autre texte la remplace
   function say(text) {
-    const el = $('#msg'); el.textContent = text; el.hidden = false; el.classList.remove('in'); void el.offsetWidth; el.classList.add('in');
-    clearTimeout(sayT); sayT = setTimeout(() => { el.hidden = true; }, Math.max(4500, text.length * 55));
+    const el = $('#msg'); el.innerHTML = `<span>${esc(text)}</span><button class="msgx" aria-label="${esc(L().close || '✕')}">✕</button>`; el.hidden = false; el.classList.remove('in'); void el.offsetWidth; el.classList.add('in');
   }
   $('#msg').onclick = () => { $('#msg').hidden = true; };
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#modal').hidden) $('#msg').hidden = true; });
 
   // ---------------- API utilisée par le contenu ----------------
   const api = {
