@@ -144,7 +144,8 @@
         <div class="sct">${s.hard ? `<span class="hardtag">💀 ${l.hard || ''}</span>` : ''}<b>${s.icon} ${X(s.name)}</b><small>${X(s.desc)}</small><em>${best[i + '-' + menuLv] ? '🏆 ' + l.best + ' : ' + fmt(best[i + '-' + menuLv]) : ''}</em></div></button>`).join('')}</div>
       <h3>${l.pickLv}</h3>
       <div class="lvs">${[0, 1, 2].map(i => `<button class="lv${i === menuLv ? ' on' : ''}"><b>${'★'.repeat(i + 1)} ${l.lv[i]}</b><small>${l.lvd[i]}</small></button>`).join('')}</div>
-      <div class="row"><button class="btn big" id="lbBtn">🏆 ${l.lbTitle || ""}</button><button class="btn gold big" id="go">${l.play} →</button></div></div>`;
+      <div class="row"><button class="btn big" id="lbBtn">🏆 ${l.lbTitle || ""}</button><button class="btn gold big" id="go">${l.play} →</button></div>
+      <p class="credit">${{ fr: 'Créatrice : ', en: 'Created by ', vi: 'Tác giả: ' }[lang] || 'Créatrice : '}<b>Lam Ha Nguyen</b></p></div>`;
     document.querySelectorAll('.sc').forEach((b, i) => { b.querySelector('canvas').getContext('2d').drawImage(thumbs[i], 0, 0); b.onclick = () => { sfx.click(); menuSc = i; renderMenu(); }; });
     document.querySelectorAll('.lv').forEach((b, i) => { b.onclick = () => { sfx.click(); menuLv = i; renderMenu(); }; });
     $('#go').onclick = () => { sfx.click(); startGame(menuSc, menuLv); };
