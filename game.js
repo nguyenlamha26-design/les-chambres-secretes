@@ -39,7 +39,8 @@
     class: ['family'], ship: ['family', 'adventure', 'culture'], temple: ['adventure', 'family'], station: ['adventure', 'story'],
     city: ['mystery', 'culture'], lantern: ['culture', 'family'], train: ['adventure', 'culture'], halloween: ['family', 'thrill'],
     xmas: ['family'], games: ['thrill'], empty: ['thrill'], magic: ['family', 'adventure'], mafia: ['mystery', 'story', 'culture'],
-    philo: ['culture'], phare: ['story'], other: ['story', 'mystery']
+    philo: ['culture'], phare: ['story'], other: ['story', 'mystery'],
+    pho: ['culture', 'story', 'family'], wuxia: ['culture', 'story', 'adventure']
   };
   const tagsOf = s => (TAGS[s.id] || []).concat(s.hard ? ['hard'] : []);
   const catName = id => { const c = CATS.find(x => x[0] === id); return c ? c[2][lang] || c[2].fr : id; };
@@ -194,7 +195,7 @@
     G.mseq = G.mword ? morseSeq(G.mword) : null;
     Object.assign(G, api);
     if (S.init) S.init(G);
-    $('#menu').hidden = true; $('#end').hidden = true; $('#hs').innerHTML = '';
+    $('#menu').hidden = true; $('#end').hidden = true; $('#hs').innerHTML = ''; $('#msg').hidden = true;
     $('#intro').hidden = false; renderIntro();
   }
   function renderIntro() {
@@ -363,7 +364,7 @@
       return;
     }
     $('#mhint').hidden = false; $('#mhint').textContent = '💡 ' + L().hint + ' (' + G.hints + ')';
-    mb.innerHTML = (d.ctx ? `<p class="ctx">${esc(X(d.ctx))}</p>` : '') + (P.i ? `<p class="ins">${P.i}</p>` : '') + `<div id="pzb"></div><div id="hintbox"></div><div id="fb"></div>`;
+    mb.innerHTML = (d.ctx ? `<p class="ctx">${esc(X(d.ctx))}</p>` : '') + (d.ins || P.i ? `<p class="ins">${d.ins ? esc(X(d.ins)) : P.i}</p>` : '') + `<div id="pzb"></div><div id="hintbox"></div><div id="fb"></div>`;
     W[p.type].render(p, $('#pzb'));
     showHints(p);
   }

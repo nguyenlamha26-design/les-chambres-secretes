@@ -70,7 +70,7 @@
       const dated = i => l === 0 || (l === 1 ? i % 3 !== 1 : i % 2 === 0);
       const left = p.order.filter(i => !p.done.includes(i));
       box().innerHTML = `<div class="lbk ${d.look || ''}">
-        <div class="lbk-loose"><h4>${tr('lbLoose')}</h4>${left.map(i => `<button class="lpage${p.bad === i ? ' bad' : ''}" data-i="${i}" style="--r:${tilt(i)}">${dated(i) ? `<b>${esc(X(pg[i].d))}</b>` : `<b class="torn">${tr('lbTorn')}</b>`}${br(X(pg[i].b))}</button>`).join('')}</div>
+        <div class="lbk-loose"><h4>${tr('lbLoose')}</h4>${left.map(i => `<button class="lpage${p.bad === i ? ' bad' : ''}" data-i="${i}" style="--r:${tilt(i)}">${dated(i) ? `<b>${esc(X(pg[i].d))}</b>` : `<b class="torn">${d.torn ? esc(X(d.torn)) : tr('lbTorn')}</b>`}${br(X(pg[i].b))}</button>`).join('')}</div>
         <div class="lbk-book"><h4>${esc(X(d.book))}</h4>${p.done.map((i, k) => `<div class="lline${k === p.done.length - 1 ? ' nw' : ''}"><b>${esc(X(pg[i].d))}</b> ${br(X(pg[i].b))}</div>`).join('') || `<p class="lempty">${tr('lbEmpty')}</p>`}</div></div>
         <p class="cnt">${tr('lbCount', { n: p.done.length, m: pg.length })}</p>`;
       const bk = box().querySelector('.lbk-book'); bk.scrollTop = bk.scrollHeight;
@@ -131,7 +131,7 @@
       const d = p.def, done = p.k >= p.nodes.length, node = done ? null : d.nodes[p.nodes[p.k]];
       const flip = !done && lv() >= 1 && p.anim !== p.k; p.anim = p.k;
       const said = done ? X(p.end) : X(node.q);
-      box().innerHTML = `<div class="refl${p.react ? ' fog' : ''}">
+      box().innerHTML = `<div class="refl${p.react ? ' fog' : ''}${d.look ? ' ' + d.look : ''}">
         <div class="rmirror"><div class="rface"></div><div class="rsay${flip ? ' flip' : ''}${done ? ' end' : ''}">${esc(said)}</div></div>
         <div class="rtrust" title="${tr('rfTrust')}">${p.nodes.map((_, i) => `<i class="${i < p.k ? 'on' : ''}"></i>`).join('')}</div>
         <div class="rlog">${p.log.map(([s, t]) => `<div class="rl-${s}"><small>${esc(X(s === 'a' ? d.who : d.me))}</small>${esc(X(t))}</div>`).join('')}</div>
