@@ -307,7 +307,7 @@
   function renderDoc(id) {
     const d = G.S.docs[id];
     $('#mt').textContent = '📜 ' + X(d.t);
-    $('#mb').innerHTML = `<div class="doc ${d.s || 'paper'}">${String(X(d.b)).replace(/\n/g, '<br>')}</div><div class="row"><button class="btn gold" id="cont">${tr('close')}</button></div>`;
+    $('#mb').innerHTML = `<div class="doc ${d.s === 'screen' ? 'term' : (d.s || 'paper')}">${String(X(d.b)).replace(/\n/g, '<br>')}</div><div class="row"><button class="btn gold" id="cont">${tr('close')}</button></div>`;
     $('#cont').onclick = closeModal;
   }
   function renderJournal() {
