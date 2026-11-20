@@ -132,7 +132,7 @@ input.ans:focus{border-color:var(--gold)}
 .doc.paper{background:linear-gradient(#f6efdc,#e8dcbd);color:#2a2118}
 .doc.note{background:linear-gradient(#fbe98a,#f1d35e);color:#2a2118;font-family:"Segoe Print","Comic Sans MS",cursive;font-size:17px;transform:rotate(-.6deg)}
 .doc.old{background:radial-gradient(ellipse at 30% 20%,#efe0b8,#cdb47e);color:#3a2410;box-shadow:inset 0 0 60px rgba(90,50,10,.4),0 8px 24px #0008}
-.doc.term{background:#03140d;color:#62ffa6;font:16px/1.75 Consolas,"Courier New",monospace;border:2px solid #1c4a32;text-shadow:0 0 8px rgba(80,255,150,.45)}
+.doc.termdoc{background:#03140d;color:#62ffa6;font:16px/1.75 Consolas,"Courier New",monospace;border:2px solid #1c4a32;text-shadow:0 0 8px rgba(80,255,150,.45)}
 .doc .code,.ciph{display:block;text-align:center;font:700 24px/1.6 Consolas,"Courier New",monospace;letter-spacing:.12em;word-spacing:.3em}
 .doc table.tt{border-collapse:collapse;width:100%;margin-bottom:10px;font-family:"Segoe UI",sans-serif;font-size:16px}
 .doc table.tt td{border-bottom:1px solid #b9c7e0;padding:5px 8px} .doc table.tt td:first-child{font-weight:700;width:90px;color:#2e4f9a}
@@ -620,6 +620,51 @@ table.ledger{border-collapse:collapse;margin:6px auto;font:14px Consolas,monospa
 .lockth.magic .dial .num{background:linear-gradient(#5a3a8a,#2a1a4a 50%,#5a3a8a);color:#e8d8ff;border-color:#a88ae8}
 .lockth.mafia .dial .num{background:linear-gradient(#c9a050,#5a3a10 50%,#c9a050);color:#1a1008;border-color:#e8c468}
 .lockth.philo .dial .num{background:linear-gradient(#f4ecd8,#c8bca0 50%,#f4ecd8);color:#3a2a10;border-color:#fff}
+
+/* ---------- Récits : journal, lettre, miroir, écritures, formulaire ---------- */
+.lbk{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;max-width:920px;box-sizing:border-box;margin:6px auto;text-align:left}
+@media (max-width:700px){.lbk,.tn{grid-template-columns:1fr!important}}
+.lbk h4,.tnp h4{margin:0 0 6px;color:var(--gold);font:700 15px Cambria,Georgia,serif;width:100%}
+.lbk-loose{display:flex;flex-direction:column;gap:9px;max-height:50vh;overflow:auto;padding:6px}
+.lpage{background:linear-gradient(#f4ead0,#e2d0a8);color:#2a1a0a;border:none;border-radius:3px;padding:9px 13px;text-align:left;font:15px/1.45 Cambria,Georgia,serif;transform:rotate(var(--r));box-shadow:0 3px 8px #0007;clip-path:polygon(0 5%,4% 0,30% 3%,62% 0,100% 2%,98% 45%,100% 100%,70% 96%,38% 100%,0 97%);cursor:pointer;transition:transform .15s;flex-shrink:0}
+.lpage:hover{transform:rotate(0) scale(1.02)}.lpage.bad{animation:shake .4s}
+.lpage b{display:block;font:700 13px Cambria,Georgia,serif;color:#7a2a1a;margin-bottom:2px}.lpage b.torn{color:#a08a68;font-style:italic;font-weight:400}
+.lbk-book{background:linear-gradient(90deg,#cdbb90,#f2e6c8 5%,#f2e6c8);color:#2a1a0a;border-radius:6px;padding:10px 16px;max-height:50vh;overflow:auto;box-shadow:inset 8px 0 12px #0003,0 6px 16px #0008;font:15px/1.5 Cambria,Georgia,serif}
+.lbk-book h4{color:#5a1a1a;border-bottom:2px solid #8a6a4a;padding-bottom:4px}.lbk-book .lline{border-bottom:1px dashed #c0ac80;padding:5px 0}.lbk-book .lline.nw{animation:up .35s}.lbk-book .lline b{color:#7a2a1a}.lempty{color:#8a7a5a;font-style:italic}
+.lbk.receipt .lpage{background:#fbfbf6;font:14px/1.45 Consolas,"Courier New",monospace;clip-path:polygon(0 0,100% 0,100% 94%,95% 100%,90% 94%,85% 100%,80% 94%,75% 100%,70% 94%,65% 100%,60% 94%,55% 100%,50% 94%,45% 100%,40% 94%,35% 100%,30% 94%,25% 100%,20% 94%,15% 100%,10% 94%,5% 100%,0 94%);padding-bottom:16px}
+.lbk.receipt .lpage b{color:#5a3a8a;font-family:Consolas,monospace}.lbk.receipt .lbk-book{background:#f6f2fa;box-shadow:0 6px 16px #0008;font-family:"Segoe UI",sans-serif}.lbk.receipt .lbk-book h4,.lbk.receipt .lline b{color:#5a3a8a}
+.tn{display:grid;grid-template-columns:1fr 1.25fr;gap:14px;width:100%;max-width:920px;box-sizing:border-box;margin:6px auto;text-align:left}
+.tnp{display:flex;flex-wrap:wrap;gap:9px;align-content:flex-start;justify-content:center}
+.strip{background:#f6f1e4;color:#1a2a7a;border:none;padding:8px 14px;font:16px/1.35 "Segoe Print","Comic Sans MS",cursive;transform:rotate(var(--r));box-shadow:0 2px 6px #0006;clip-path:polygon(0 10%,3% 0,40% 6%,97% 2%,100% 12%,99% 90%,96% 100%,50% 94%,4% 100%,0 88%);cursor:pointer;text-align:left;max-width:100%}
+.strip:hover{transform:rotate(0) scale(1.03)}
+.tnl{background:#f6f1e4 repeating-linear-gradient(transparent 0 27px,#c8d4f0 27px 28px);color:#1a2a7a;border-radius:4px;padding:12px 18px;font:16px/28px "Segoe Print","Comic Sans MS",cursive;min-height:240px;box-shadow:0 6px 16px #0008}
+.tnl p{margin:0;cursor:pointer}.tnl p.nw{animation:up .3s}.tnl p:hover{text-decoration:line-through}.tnl p.fx{cursor:default;text-decoration:none}.tnl p.sig{text-align:center;opacity:.4}
+.tn.kid .strip,.tn.kid .tnl{color:#6a2aa0}.tn.kid .tnl{background-color:#f8f0ff}
+.refl{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;max-width:720px;margin:0 auto}
+.rmirror{position:relative;width:min(460px,92vw);min-height:150px;border-radius:46% 46% 16px 16px/30% 30% 16px 16px;background:radial-gradient(ellipse at 45% 30%,#4a5070,#141826 72%);border:10px solid #c9a050;box-shadow:inset 0 0 40px #000c,0 8px 24px #000a;display:grid;place-items:center;padding:34px 30px 22px;overflow:hidden;transition:filter .4s}
+.rmirror::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.1) 45%,transparent 60%);pointer-events:none}
+.rface{position:absolute;left:50%;bottom:-40px;width:170px;height:210px;transform:translateX(-50%);background:radial-gradient(circle at 50% 28%,rgba(190,180,230,.22) 0 22%,transparent 23%),radial-gradient(ellipse at 50% 100%,rgba(190,180,230,.16) 0 50%,transparent 51%);animation:rsway 5s ease-in-out infinite}
+@keyframes rsway{50%{transform:translateX(-44%)}}
+.rsay{position:relative;z-index:1;font:italic 18px/1.5 Cambria,Georgia,serif;color:#f0eaff;text-align:center;text-shadow:0 0 10px #8a6aff}.rsay.end{color:#fff4d0;text-shadow:0 0 12px #ffd27a}
+.rsay.flip{animation:rflip 1.8s both}@keyframes rflip{0%,50%{transform:scaleX(-1);filter:blur(.6px);opacity:.75}100%{transform:none;filter:none;opacity:1}}
+.refl.fog .rmirror{filter:blur(1.5px) saturate(.3) brightness(.8)}
+.rtrust{display:flex;gap:7px}.rtrust i{width:14px;height:14px;border-radius:50%;border:2px solid #a88ae8}.rtrust i.on{background:#c8a8ff;box-shadow:0 0 8px #c8a8ff}
+.rlog{width:100%;max-height:20vh;overflow:auto;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.rlog div{padding:5px 10px;border-radius:12px;max-width:85%;text-align:left}.rlog small{display:block;font-size:11px;opacity:.65}
+.rl-a{background:#2a2244;align-self:flex-start}.rl-b{background:#1e3a30;align-self:flex-end}
+.ropts{display:flex;flex-direction:column;gap:6px;width:100%}.ropt{text-align:left;white-space:normal;font-size:15px;line-height:1.35}
+.rreact{color:#ffaaaa;font-style:italic;margin:0;text-align:center}
+.hrules{background:#f2e8d0;color:#2a1a0a;border-radius:8px;padding:6px 14px;font:14px/1.5 Cambria,Georgia,serif;width:fit-content;max-width:94%;margin:4px auto;text-align:left}
+.hnotes{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:9px;width:100%;max-width:880px;margin:6px auto}
+.hnote{display:flex;flex-direction:column;justify-content:space-between;gap:8px;background:#fdfcf6;color:#1a1a22;border:3px solid #c8c4b8;border-radius:12px;padding:10px 12px;text-align:left;font:15px/1.4 "Segoe UI",sans-serif;box-shadow:0 3px 8px #0006}
+.hnote em{align-self:flex-end;font-style:normal;font-weight:800;padding:2px 12px;border-radius:10px;background:#e4e0d4;color:#5a5a5a}
+.hnote.a0{border-color:#3a7ae8}.hnote.a0 em{background:#3a7ae8;color:#fff}.hnote.a1{border-color:#9a4ae8}.hnote.a1 em{background:#9a4ae8;color:#fff}
+.rform{background:#f4f0e2;color:#1a1a1a;border-radius:4px;padding:12px 18px;width:100%;max-width:700px;box-sizing:border-box;margin:6px auto;text-align:left;font:15px Cambria,Georgia,serif;box-shadow:0 6px 16px #0008}
+.rform h4{margin:0 0 8px;font:700 13px "Courier New",monospace;text-align:center;border-bottom:2px solid #1a1a1a;padding-bottom:6px}
+.rform ol{margin:0;padding-left:22px}.rform li{margin:8px 0}.rform li div{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.rform .btn{background:#fff;color:#1a1a1a;border:2px solid #8a8a7a;font-size:14px;padding:4px 12px;box-shadow:none}.rform .btn.on{background:#1a3a7a;color:#fff;border-color:#1a3a7a}
+.lockth.phare .dial .num{background:linear-gradient(#c9a050,#5a3a10 50%,#c9a050);color:#fff8e0;border-color:#e8c468}
+.lockth.other .dial .num{background:linear-gradient(#8a5ac8,#3a1a5a 50%,#8a5ac8);color:#fff;border-color:#c8a8ff}
 </style>
 </head>
 <body class="nohud">
@@ -664,6 +709,7 @@ table.ledger{border-collapse:collapse;margin:6px auto;font:14px Consolas,monospa
 <script src="content8.js"></script>
 <script src="content9.js"></script>
 <script src="content10.js"></script>
+<script src="content11.js"></script>
 <script src="content6.js"></script>
 <script src="scenes.js"></script>
 <script src="scenes2.js"></script>
@@ -673,6 +719,7 @@ table.ledger{border-collapse:collapse;margin:6px auto;font:14px Consolas,monospa
 <script src="scenes6.js"></script>
 <script src="scenes7.js"></script>
 <script src="scenes8.js"></script>
+<script src="scenes9.js"></script>
 <script src="fx.js"></script>
 <script src="game.js"></script>
 <script src="widgets2.js"></script>
@@ -682,6 +729,7 @@ table.ledger{border-collapse:collapse;margin:6px auto;font:14px Consolas,monospa
 <script src="widgets6.js"></script>
 <script src="widgets7.js"></script>
 <script src="widgets8.js"></script>
+<script src="widgets9.js"></script>
 <script src="leaderboard.js"></script>
 </body>
 </html>

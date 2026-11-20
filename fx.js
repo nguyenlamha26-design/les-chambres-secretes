@@ -21,7 +21,9 @@
     empty: { tint: '#9a8aff', ta: .14, lift: .10, bloom: .6, p: 'spark', pc: '#d8d0ff', bokeh: '#ff4aa0' },
     magic: { tint: '#b89aff', ta: .14, lift: .10, bloom: .6, p: 'firefly', pc: '#e8d8ff', bokeh: '#8a6aff' },
     mafia: { tint: '#ffb070', ta: .14, lift: .08, bloom: .5, p: 'dust', pc: '#ffe0b0', bokeh: '#ffb060' },
-    philo: { tint: '#ffd8a0', ta: .10, lift: .06, bloom: .45, p: 'dust', pc: '#fff4d8', bokeh: '#ffe0a0' }
+    philo: { tint: '#ffd8a0', ta: .10, lift: .06, bloom: .45, p: 'dust', pc: '#fff4d8', bokeh: '#ffe0a0' },
+    phare: { tint: '#9ac0ff', ta: .14, lift: .08, bloom: .55, p: 'dust', pc: '#d8e8ff', bokeh: '#ffcf80' },
+    other: { tint: '#c8a0ff', ta: .12, lift: .10, bloom: .55, p: 'dust', pc: '#f0e0ff', bokeh: '#d8a8ff' }
   };
   const theme = id => THEME[id] || THEME.class;
 

@@ -5,13 +5,13 @@
   const K = window.GameKit, cfg = window.LB_CONFIG || {}, online = !!(cfg.url && cfg.key);
   const S = {
     fr: { lbTitle: 'Classement', yourName: 'Ton nom pour le classement', save: 'Enregistrer', skip: 'Passer', rank: 'Rang', player: 'Joueur', time: 'Temps', hints: 'Indices', date: 'Date',
-      empty: 'Personne n’a encore réussi ce scénario à ce niveau. Sois le premier !', saved: 'Bravo {n} ! Tu es {r}e sur {t}.', first: 'Bravo {n} ! Tu es 1er sur {t} !', offline: 'Classement en ligne indisponible : score gardé sur cet appareil.',
+      empty: 'Personne n’a encore réussi ce scénario à ce niveau. Sois le premier !', saved: 'Bravo {n} ! Tu es {r}e sur {t}.', lbFirst: 'Bravo {n} ! Tu es 1er sur {t} !', offline: 'Classement en ligne indisponible : score gardé sur cet appareil.',
       local: 'Classement de cet appareil', global: 'Classement mondial', loading: 'Chargement…', close: 'Fermer', top: 'Top 10' },
     en: { lbTitle: 'Leaderboard', yourName: 'Your name for the leaderboard', save: 'Save', skip: 'Skip', rank: 'Rank', player: 'Player', time: 'Time', hints: 'Hints', date: 'Date',
-      empty: 'Nobody has beaten this scenario at this level yet. Be the first!', saved: 'Well done {n}! You are #{r} out of {t}.', first: 'Well done {n}! You are #1 out of {t}!', offline: 'Online leaderboard unavailable: score kept on this device.',
+      empty: 'Nobody has beaten this scenario at this level yet. Be the first!', saved: 'Well done {n}! You are #{r} out of {t}.', lbFirst: 'Well done {n}! You are #1 out of {t}!', offline: 'Online leaderboard unavailable: score kept on this device.',
       local: 'This device’s leaderboard', global: 'World leaderboard', loading: 'Loading…', close: 'Close', top: 'Top 10' },
     vi: { lbTitle: 'Bảng xếp hạng', yourName: 'Tên của bạn trên bảng xếp hạng', save: 'Lưu', skip: 'Bỏ qua', rank: 'Hạng', player: 'Người chơi', time: 'Thời gian', hints: 'Gợi ý', date: 'Ngày',
-      empty: 'Chưa có ai vượt qua kịch bản này ở cấp độ này. Hãy là người đầu tiên!', saved: 'Giỏi lắm {n}! Bạn đứng hạng {r} trên {t}.', first: 'Giỏi lắm {n}! Bạn đứng hạng nhất trên {t}!', offline: 'Không kết nối được bảng xếp hạng trực tuyến: điểm được lưu trên máy này.',
+      empty: 'Chưa có ai vượt qua kịch bản này ở cấp độ này. Hãy là người đầu tiên!', saved: 'Giỏi lắm {n}! Bạn đứng hạng {r} trên {t}.', lbFirst: 'Giỏi lắm {n}! Bạn đứng hạng nhất trên {t}!', offline: 'Không kết nối được bảng xếp hạng trực tuyến: điểm được lưu trên máy này.',
       local: 'Bảng xếp hạng trên máy này', global: 'Bảng xếp hạng toàn cầu', loading: 'Đang tải…', close: 'Đóng', top: 'Top 10' }
   };
   for (const l in S) Object.assign(window.T[l], S[l]);
@@ -70,7 +70,7 @@
     const { rows, online: on } = await fetchAll(G.S.id, G.lvl), me = G.lbRow;
     if (!rows.some(x => same(x, me))) { rows.push(me); rows.sort(byScore); }
     const r = rows.findIndex(x => same(x, me)) + 1;
-    el.innerHTML = `<p class="nb">${tr(r === 1 ? 'first' : 'saved', { n: esc(me.name), r, t: rows.length })}</p>${!G.lbOnline && online ? `<p class="cnt">${tr('offline')}</p>` : ''}${table(rows, me)}<p class="cnt">${on ? '🌍 ' + tr('global') : '💻 ' + tr('local')}</p>`;
+    el.innerHTML = `<p class="nb">${tr(r === 1 ? 'lbFirst' : 'saved', { n: esc(me.name), r, t: rows.length })}</p>${!G.lbOnline && online ? `<p class="cnt">${tr('offline')}</p>` : ''}${table(rows, me)}<p class="cnt">${on ? '🌍 ' + tr('global') : '💻 ' + tr('local')}</p>`;
   }
 
   // ---------- Fenêtre du menu ----------

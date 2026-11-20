@@ -1,10 +1,10 @@
 # Les Chambres Secrètes · The Secret Chambers · Mật Thất
 
-Jeu d'évasion dans le navigateur : explore, fouille, déduis. 14 scénarios (dont 2 corsés), 3 niveaux de difficulté, 107 énigmes de 100 types différents, en français, anglais et vietnamien.
+Jeu d'évasion dans le navigateur : explore, fouille, déduis. 16 scénarios (dont 2 corsés et 2 axés sur le récit), 3 niveaux de difficulté, 119 énigmes de 105 types différents, en français, anglais et vietnamien.
 
-Browser escape game: explore, search, deduce. 14 scenarios (2 of them tough), 3 difficulty levels, 107 puzzles of 100 different kinds, in French, English and Vietnamese.
+Browser escape game: explore, search, deduce. 16 scenarios (2 of them tough, 2 story-driven), 3 difficulty levels, 119 puzzles of 105 different kinds, in French, English and Vietnamese.
 
-Trò chơi thoát phòng trên trình duyệt: khám phá, lục tìm, suy luận. 14 kịch bản (2 kịch bản khó), 3 cấp độ, 107 câu đố thuộc 100 loại khác nhau, bằng tiếng Pháp, tiếng Anh và tiếng Việt.
+Trò chơi thoát phòng trên trình duyệt: khám phá, lục tìm, suy luận. 16 kịch bản (2 kịch bản khó, 2 kịch bản thiên về cốt truyện), 3 cấp độ, 119 câu đố thuộc 105 loại khác nhau, bằng tiếng Pháp, tiếng Anh và tiếng Việt.
 
 ## Scénarios
 
@@ -22,6 +22,8 @@ Trò chơi thoát phòng trên trình duyệt: khám phá, lục tìm, suy luậ
 - 🪄 **L’Académie de Brumeval** — une école de magie cachée dans les Laurentides
 - 🎩 **La Famille Corsetti** — Montréal 1931, la prohibition et un traître
 - 🏛️ **L’Agora du temps** — Socrate, Platon, Descartes, Rousseau, Marx et Hồ Chí Minh
+- 🌊 **Le Phare de Cap-aux-Brumes** — un journal de bord aux pages arrachées, une lettre jamais lue (récit)
+- 🪞 **L’Autre Moi** — trois jours perdus, deux écritures, une conversation avec son reflet (récit)
 
 Les scénarios corsés donnent 25 % de temps en moins, deux indices de moins, des erreurs plus coûteuses et des énigmes d'un cran plus difficiles.
 

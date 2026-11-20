@@ -103,6 +103,7 @@
     set(f) { G.f[f] = 1; buildHS(); updateNav(); },
     say: t => say(X(t)),
     doc: (id, quiet) => openDoc(id, quiet),
+    keep(id) { if (!G.docs.includes(id)) { G.docs.push(id); G.f['doc_' + id] = 1; toast(tr('newDoc', { x: X(G.S.docs[id].t) })); } },
     pz: id => openModal('pz', id),
     solved: id => !!G.f['pz_' + id],
     digit(s) { if (G.found[s]) return; G.found[s] = 1; toast(tr('digitFound', { s, d: G.code[s] })); updateHUD(); if (SYM.every(x => G.found[x])) setTimeout(() => toast(tr('allFound')), 900); },
@@ -233,6 +234,7 @@
     if (vw.lock && vw.lock(G) && !(vw.unlock && vw.unlock(G))) { sfx.bad(); say(X(vw.lockMsg)); return; }
     sfx.step(); G.view = to; G.fade = performance.now(); buildHS(); updateNav();
     if (!canSee()) say(tr('tooDark'));
+    else if (vw.enter && !G.f['seen_' + to]) { G.f['seen_' + to] = 1; say(X(vw.enter)); }
   }
   $('#navL').onclick = () => goView(neighbours()[0]);
   $('#navR').onclick = () => goView(neighbours()[1]);
@@ -307,7 +309,7 @@
   function renderDoc(id) {
     const d = G.S.docs[id];
     $('#mt').textContent = '📜 ' + X(d.t);
-    $('#mb').innerHTML = `<div class="doc ${d.s === 'screen' ? 'term' : (d.s || 'paper')}">${String(X(d.b)).replace(/\n/g, '<br>')}</div><div class="row"><button class="btn gold" id="cont">${tr('close')}</button></div>`;
+    $('#mb').innerHTML = `<div class="doc ${d.s === 'screen' ? 'termdoc' : (d.s || 'paper')}">${String(X(d.b)).replace(/\n/g, '<br>')}</div><div class="row"><button class="btn gold" id="cont">${tr('close')}</button></div>`;
     $('#cont').onclick = closeModal;
   }
   function renderJournal() {
