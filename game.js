@@ -23,7 +23,26 @@
   const fmt = s => { s = Math.max(0, Math.ceil(s)); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
   const esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]);
 
-  let G = null, menuSc = 0, menuLv = 1;
+  let G = null, menuSc = 0, menuLv = 1, menuCat = 'all';
+  // Catégories des scénarios (un scénario peut en avoir plusieurs) ; « corsé » se déduit de S.hard
+  const CATS = [
+    ['all', '✨', { fr: 'Tous', en: 'All', vi: 'Tất cả' }],
+    ['story', '📖', { fr: 'Récit', en: 'Story', vi: 'Cốt truyện' }],
+    ['family', '👨‍👩‍👧', { fr: 'Famille', en: 'Family', vi: 'Gia đình' }],
+    ['culture', '🌍', { fr: 'Culture', en: 'Culture', vi: 'Văn hóa' }],
+    ['mystery', '🔍', { fr: 'Enquête', en: 'Mystery', vi: 'Điều tra' }],
+    ['adventure', '🧭', { fr: 'Aventure', en: 'Adventure', vi: 'Phiêu lưu' }],
+    ['thrill', '👻', { fr: 'Frissons', en: 'Thrills', vi: 'Rùng rợn' }],
+    ['hard', '💀', { fr: 'Corsé', en: 'Tough', vi: 'Khó nhằn' }]
+  ];
+  const TAGS = {
+    class: ['family'], ship: ['family', 'adventure', 'culture'], temple: ['adventure', 'family'], station: ['adventure', 'story'],
+    city: ['mystery', 'culture'], lantern: ['culture', 'family'], train: ['adventure', 'culture'], halloween: ['family', 'thrill'],
+    xmas: ['family'], games: ['thrill'], empty: ['thrill'], magic: ['family', 'adventure'], mafia: ['mystery', 'story', 'culture'],
+    philo: ['culture'], phare: ['story'], other: ['story', 'mystery']
+  };
+  const tagsOf = s => (TAGS[s.id] || []).concat(s.hard ? ['hard'] : []);
+  const catName = id => { const c = CATS.find(x => x[0] === id); return c ? c[2][lang] || c[2].fr : id; };
 
   // Résout un texte : objet {fr,en,vi}, fonction, ou chaîne avec des {variables}
   function X(t) {
@@ -141,14 +160,18 @@
       <div class="langs">${LANGS.map(([c, n]) => `<button class="lg${c === lang ? ' on' : ''}" data-l="${c}">${n}</button>`).join('')}</div>
       <h1>${l.title}</h1><p class="tagline">${l.tag}</p>
       <h3>${l.pickSc}</h3>
-      <div class="scs">${SC.map((s, i) => `<button class="sc${i === menuSc ? ' on' : ''}"><canvas width="400" height="225"></canvas>
-        <div class="sct">${s.hard ? `<span class="hardtag">💀 ${l.hard || ''}</span>` : ''}<b>${s.icon} ${X(s.name)}</b><small>${X(s.desc)}</small><em>${best[i + '-' + menuLv] ? '🏆 ' + l.best + ' : ' + fmt(best[i + '-' + menuLv]) : ''}</em></div></button>`).join('')}</div>
+      <div class="cats">${CATS.map(([id, ic]) => `<button class="cat${id === menuCat ? ' on' : ''}" data-c="${id}">${ic} ${catName(id)} <i>${id === 'all' ? SC.length : SC.filter(s => tagsOf(s).includes(id)).length}</i></button>`).join('')}</div>
+      <div class="scs">${SC.map((s, i) => `<button class="sc${i === menuSc ? ' on' : ''}"${menuCat !== 'all' && !tagsOf(s).includes(menuCat) ? ' hidden' : ''}><canvas width="400" height="225"></canvas>
+        <div class="sct">${s.hard ? `<span class="hardtag">💀 ${l.hard || ''}</span>` : ''}<b>${s.icon} ${X(s.name)}</b><small>${X(s.desc)}</small><span class="ctags">${(TAGS[s.id] || []).map(c => `<i>${CATS.find(x => x[0] === c)[1]} ${catName(c)}</i>`).join('')}</span><em>${best[i + '-' + menuLv] ? '🏆 ' + l.best + ' : ' + fmt(best[i + '-' + menuLv]) : ''}</em></div></button>`).join('')}</div>
       <h3>${l.pickLv}</h3>
       <div class="lvs">${[0, 1, 2].map(i => `<button class="lv${i === menuLv ? ' on' : ''}"><b>${'★'.repeat(i + 1)} ${l.lv[i]}</b><small>${l.lvd[i]}</small></button>`).join('')}</div>
       <div class="row"><button class="btn big" id="lbBtn">🏆 ${l.lbTitle || ""}</button><button class="btn gold big" id="go">${l.play} →</button></div>
+      <section id="cmts" class="cmts"></section>
       <p class="credit">${{ fr: 'Créatrice : ', en: 'Created by ', vi: 'Tác giả: ' }[lang] || 'Créatrice : '}<b>Lam Ha Nguyen</b></p></div>`;
     document.querySelectorAll('.sc').forEach((b, i) => { b.querySelector('canvas').getContext('2d').drawImage(thumbs[i], 0, 0); b.onclick = () => { sfx.click(); menuSc = i; renderMenu(); }; });
     document.querySelectorAll('.lv').forEach((b, i) => { b.onclick = () => { sfx.click(); menuLv = i; renderMenu(); }; });
+    document.querySelectorAll('.cat').forEach(b => { b.onclick = () => { sfx.click(); menuCat = b.dataset.c; renderMenu(); }; });
+    if (window.Comments) window.Comments.mount($('#cmts'));
     $('#go').onclick = () => { sfx.click(); startGame(menuSc, menuLv); };
     $('#lbBtn').onclick = () => { sfx.click(); if (window.Leaderboard) window.Leaderboard.open(menuSc, menuLv); };
   }
@@ -674,7 +697,7 @@
     return cv.toDataURL('image/jpeg', .85);
   }
 
-  window.GameKit = { fmt, get lang() { return lang; }, get G() { return G; }, W, tr, L, X, solve, fail, beep, sfx, esc, norm, inputRow, bindInput, slideImage, api, ps, renderPz, $ };
+  window.GameKit = { menu: () => { if (!$('#menu').hidden) renderMenu(); }, fmt, get lang() { return lang; }, get G() { return G; }, W, tr, L, X, solve, fail, beep, sfx, esc, norm, inputRow, bindInput, slideImage, api, ps, renderPz, $ };
 
   // Signal Morse joué dans la fenêtre (lampe + son)
   let M = null, mOsc = [];
