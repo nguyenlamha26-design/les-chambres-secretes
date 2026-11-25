@@ -2,7 +2,7 @@
 window.T = {
   fr: {
     title: 'Les Chambres Secrètes',
-    tag: "Jeu d'évasion — explore, fouille, déduis. 18 scénarios, 3 niveaux.",
+    tag: "Jeu d'évasion — explore, fouille, déduis. 20 scénarios, 3 niveaux.",
     pickSc: 'Choisis ton scénario', pickLv: 'Difficulté',
     lv: ['Facile', 'Normal', 'Expert'],
     hard: 'Corsé', hardd: '{t} min · {h} indice(s) · erreur = −{p} s · énigmes plus difficiles',
@@ -67,7 +67,7 @@ window.T = {
 
   en: {
     title: 'The Secret Chambers',
-    tag: 'Escape game — explore, search, deduce. 18 scenarios, 3 levels.',
+    tag: 'Escape game — explore, search, deduce. 20 scenarios, 3 levels.',
     pickSc: 'Choose your scenario', pickLv: 'Difficulty',
     lv: ['Easy', 'Normal', 'Expert'],
     hard: 'Tough', hardd: '{t} min · {h} hint(s) · mistake = −{p} s · harder puzzles',
@@ -132,7 +132,7 @@ window.T = {
 
   vi: {
     title: 'Mật Thất',
-    tag: 'Trò chơi thoát phòng — khám phá, lục tìm, suy luận. 18 kịch bản, 3 cấp độ.',
+    tag: 'Trò chơi thoát phòng — khám phá, lục tìm, suy luận. 20 kịch bản, 3 cấp độ.',
     pickSc: 'Chọn kịch bản', pickLv: 'Độ khó',
     lv: ['Dễ', 'Vừa', 'Khó'],
     hard: 'Khó nhằn', hardd: '{t} phút · {h} gợi ý · sai = −{p} giây · câu đố khó hơn',

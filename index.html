@@ -719,6 +719,40 @@ table.ledger{border-collapse:collapse;margin:6px auto;font:14px Consolas,monospa
 .refl.bronze .rsay{color:#2a1606;text-shadow:0 0 8px #fff0c0;font-size:17px}.refl.bronze .rsay.end{color:#3a1a00}.refl.bronze .rface{display:none}
 .lockth.pho .dial .num{background:linear-gradient(#d0202a,#6a0a10 50%,#d0202a);color:#ffe8a8;border-color:#e8b030}
 .lockth.wuxia .dial .num{background:linear-gradient(#2a8a5a,#0a3a24 50%,#2a8a5a);color:#e8ffe8;border-color:#a8e8c0}
+/* ---------- Enquêtes ---------- */
+.prw{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:flex-start;width:100%;max-width:900px;margin:0 auto}
+.prscene{display:flex;flex-direction:column;align-items:center;gap:6px;background:linear-gradient(#6a6052,#3a342c);border-radius:14px;padding:10px 16px;box-shadow:inset 0 0 30px #0008}
+.prscene.snow{background:linear-gradient(#e8eef8,#b8c4d8);color:#1a2438}.prscene b{font-size:14px}.prscene small{font-size:12px;opacity:.8}
+.sole{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;width:max-content}
+.sole i{width:16px;height:16px;border-radius:3px;background:#c8b89a}.sole i.f{background:#2a1e14}.sole i.h{background:repeating-linear-gradient(45deg,#8a8070 0 3px,#a8a090 3px 6px)}.sole i.x{background:none}
+.prscene .sole i{width:22px;height:22px}.prs .sole i.f{background:#5a3a1e;box-shadow:inset 0 0 0 1px #9a7a54}
+.prscene.snow .sole i:not(.x):not(.h):not(.f),.prscene.snow+.prsus .sole i:not(.x):not(.f){background:#f4f8ff}.prscene.snow .sole i.f,.prscene.snow+.prsus .sole i.f{background:#4a5a78;box-shadow:none}
+.prsus{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;flex:1;min-width:260px}
+.prs{display:flex;flex-direction:column;align-items:center;gap:6px;background:#1d1729;border:2px solid #3a3050;border-radius:12px;padding:8px;cursor:pointer;color:inherit;font:inherit;font-size:13px;max-width:130px}
+.prs .sole i{width:12px;height:12px}.prs.on{border-color:#ffd27a;box-shadow:0 0 12px #ffd27a88}
+.labt{border-collapse:collapse;margin:6px auto;max-width:100%}.labt th,.labt td{padding:4px 6px;text-align:center;font-size:13px}.labt th{color:var(--dim);vertical-align:bottom}
+.lbn{display:flex;align-items:center;gap:6px;text-align:left;font-size:14px;min-width:150px}.lbn b{font-size:22px}
+.drop{width:38px;height:34px;border-radius:8px;border:2px dashed #5a4a70;background:#1d1729;cursor:pointer;font-size:18px}.drop.on{border-style:solid;border-color:#7ac8ff;background:#1a2a40}.drop:disabled{cursor:default;opacity:.85}
+.strip{display:block;margin-top:4px;border-radius:6px;padding:2px 6px;font-size:12px;color:#fff}.strip.pos{background:#8a3ad0}.strip.neg{background:#4a4a52}
+.lbp{padding:4px 10px;min-width:0}.lbp.on{background:#ffd27a;color:#2a1a06}
+.ctw{width:100%;max-width:960px;margin:0 auto}.ctwho{display:flex;align-items:center;justify-content:center;gap:10px;font-size:34px;margin-bottom:6px}.ctwho b{font-size:20px}.ctwho small{font-size:14px;color:var(--dim)}
+.ctcols{display:grid;grid-template-columns:3fr 2fr;gap:12px;text-align:left}.ctcols h4{margin:0 0 6px;color:var(--gold);font-size:15px}
+.ctst,.ctev{display:flex;flex-direction:column;gap:6px}
+.cts{background:#f4efe2;color:#2a2118;border:2px solid transparent;border-radius:12px;padding:8px 12px;text-align:left;font:15px/1.45 Cambria,"Times New Roman",serif;cursor:pointer}
+.cts.on{border-color:#e05a4a;box-shadow:0 0 10px #e05a4a88}.cts.broke{background:#3a2a2a;color:#c8b8a8;text-decoration:line-through;text-decoration-color:#e05a4a;cursor:default}
+.cts.broke em{display:inline-block;width:100%;box-sizing:border-box;margin-top:6px;text-decoration:none;font-style:italic;color:#ffd8b0;background:#2a1a1a;border-left:3px solid #e05a4a;padding:4px 8px;border-radius:4px}
+.cte{display:flex;align-items:center;gap:8px;background:#1d1729;border:2px solid #3a3050;border-radius:10px;padding:6px 10px;color:inherit;font:inherit;font-size:14px;text-align:left;cursor:pointer}.cte b{font-size:20px}
+.cte.on{border-color:#ffd27a;background:#2a2238}.cte.no{opacity:.45;cursor:default}
+.cldoc{background:#f4efe2;color:#2a2118;border-radius:6px;padding:14px 20px;max-width:680px;margin:0 auto;text-align:left;box-shadow:0 6px 18px #000a;font:16px/1.7 Cambria,"Times New Roman",serif}
+.cldoc h4{margin:0 0 8px;font-size:15px;color:#6a4a2a;border-bottom:1px solid #c8b898;padding-bottom:6px}
+.clp{cursor:pointer;border-radius:3px;padding:1px 2px}.clp:hover{background:#e8dcb8}.clp.on{background:#ffd0c8;box-shadow:0 0 0 2px #c02020;color:#7a0a0a}
+.acc{display:flex;flex-direction:column;gap:10px;width:100%;max-width:820px;margin:0 auto;text-align:left}
+.accq{background:#1d1729;border-radius:12px;padding:10px 14px}.accq h4{margin:0 0 6px;color:var(--gold);font:600 16px Cambria,"Times New Roman",serif}
+.acco{display:flex;flex-wrap:wrap;gap:6px}.aco{font-size:14px;white-space:normal;text-align:left}.aco.on{background:#ffd27a;color:#2a1a06}
+.acev{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:8px;font-size:13px;color:var(--dim)}.acev select{background:#2a2238;color:#fff;border:1px solid #4a4060;border-radius:8px;padding:5px 8px;font:inherit;font-size:14px;max-width:100%}
+@media (max-width:700px){.ctcols{grid-template-columns:1fr}.lbn{min-width:0}.lbn b{font-size:18px}.drop{width:30px}}
+.lockth.theatre .dial .num{background:linear-gradient(#a8182a,#4a0810 50%,#a8182a);color:#ffe8b0;border-color:#d8a840}
+.lockth.musee .dial .num{background:linear-gradient(#e8e2d6,#a8a090 50%,#e8e2d6);color:#2a2a3a;border-color:#fff}
 </style>
 </head>
 <body class="nohud">
@@ -766,6 +800,7 @@ table.ledger{border-collapse:collapse;margin:6px auto;font:14px Consolas,monospa
 <script src="content11.js"></script>
 <script src="content12.js"></script>
 <script src="content6.js"></script>
+<script src="content13.js"></script>
 <script src="scenes.js"></script>
 <script src="scenes2.js"></script>
 <script src="scenes3.js"></script>
@@ -776,6 +811,7 @@ table.ledger{border-collapse:collapse;margin:6px auto;font:14px Consolas,monospa
 <script src="scenes8.js"></script>
 <script src="scenes9.js"></script>
 <script src="scenes10.js"></script>
+<script src="scenes11.js"></script>
 <script src="fx.js"></script>
 <script src="game.js"></script>
 <script src="widgets2.js"></script>
@@ -787,6 +823,7 @@ table.ledger{border-collapse:collapse;margin:6px auto;font:14px Consolas,monospa
 <script src="widgets8.js"></script>
 <script src="widgets9.js"></script>
 <script src="widgets10.js"></script>
+<script src="widgets11.js"></script>
 <script src="leaderboard.js"></script>
 <script src="comments.js"></script>
 </body>

@@ -40,7 +40,8 @@
     city: ['mystery', 'culture'], lantern: ['culture', 'family'], train: ['adventure', 'culture'], halloween: ['family', 'thrill'],
     xmas: ['family'], games: ['thrill'], empty: ['thrill'], magic: ['family', 'adventure'], mafia: ['mystery', 'story', 'culture'],
     philo: ['culture'], phare: ['story'], other: ['story', 'mystery'],
-    pho: ['culture', 'story', 'family'], wuxia: ['culture', 'story', 'adventure']
+    pho: ['culture', 'story', 'family'], wuxia: ['culture', 'story', 'adventure'],
+    theatre: ['mystery', 'story', 'culture'], musee: ['mystery', 'culture', 'family']
   };
   const tagsOf = s => (TAGS[s.id] || []).concat(s.hard ? ['hard'] : []);
   const catName = id => { const c = CATS.find(x => x[0] === id); return c ? c[2][lang] || c[2].fr : id; };

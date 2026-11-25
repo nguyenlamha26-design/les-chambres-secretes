@@ -1,10 +1,10 @@
 # Les Chambres Secrètes · The Secret Chambers · Mật Thất
 
-Jeu d'évasion dans le navigateur : explore, fouille, déduis. 18 scénarios (dont 2 corsés, 2 axés sur le récit et 2 très culturels), classés par catégories, 3 niveaux de difficulté, 131 énigmes de 111 types différents, une section de commentaires, en français, anglais et vietnamien.
+Jeu d'évasion dans le navigateur : explore, fouille, déduis. 20 scénarios (dont 2 corsés, 2 axés sur le récit, 2 très culturels et 2 enquêtes à preuves), classés par catégories, 3 niveaux de difficulté, 143 énigmes de 116 types différents, une section de commentaires, en français, anglais et vietnamien.
 
-Browser escape game: explore, search, deduce. 18 scenarios (2 of them tough, 2 story-driven, 2 deeply cultural), sorted into categories, 3 difficulty levels, 131 puzzles of 111 different kinds, a comments section, in French, English and Vietnamese.
+Browser escape game: explore, search, deduce. 20 scenarios (2 of them tough, 2 story-driven, 2 deeply cultural, 2 evidence-based investigations), sorted into categories, 3 difficulty levels, 143 puzzles of 116 different kinds, a comments section, in French, English and Vietnamese.
 
-Trò chơi thoát phòng trên trình duyệt: khám phá, lục tìm, suy luận. 18 kịch bản (2 kịch bản khó, 2 kịch bản thiên về cốt truyện, 2 kịch bản đậm chất văn hóa), xếp theo thể loại, 3 cấp độ, 131 câu đố thuộc 111 loại khác nhau, có mục bình luận, bằng tiếng Pháp, tiếng Anh và tiếng Việt.
+Trò chơi thoát phòng trên trình duyệt: khám phá, lục tìm, suy luận. 20 kịch bản (2 kịch bản khó, 2 kịch bản thiên về cốt truyện, 2 kịch bản đậm chất văn hóa, 2 vụ điều tra dựa trên bằng chứng), xếp theo thể loại, 3 cấp độ, 143 câu đố thuộc 116 loại khác nhau, có mục bình luận, bằng tiếng Pháp, tiếng Anh và tiếng Việt.
 
 ## Scénarios
 
@@ -26,6 +26,10 @@ Trò chơi thoát phòng trên trình duyệt: khám phá, lục tìm, suy luậ
 - 🪞 **L’Autre Moi** — trois jours perdus, deux écritures, une conversation avec son reflet (récit)
 - 🍜 **La Recette de Bà Hạnh** — reconstituer le bouillon de phở d’une grand-mère disparue : épices, dégustation, herbes (cuisine vietnamienne)
 - 🗡️ **Le Serment du Lac de Jade** — une secte de cape et d’épée inventée : huit trigrammes, cinq éléments, cithare qin, miroir de bronze (culture chinoise)
+- 🎭 **Le Dernier Rappel** — Québec 1959, une vedette empoisonnée en pleine première : empreintes, analyse, interrogatoires, accusation (enquête)
+- 🖼️ **La Toile disparue** — un chef-d’œuvre remplacé par un faux pendant une tempête de neige, trois complices à démasquer (enquête)
+
+Les enquêtes reposent sur les preuves : on compare des empreintes, on conçoit une analyse avec peu de réactifs, on confronte chaque mensonge à la bonne pièce à conviction, on repère la phrase qui trahit le coupable, puis on formule une accusation justifiée point par point.
 
 Les scénarios corsés donnent 25 % de temps en moins, deux indices de moins, des erreurs plus coûteuses et des énigmes d'un cran plus difficiles.
 
@@ -41,7 +45,7 @@ Ouvre `index.html` dans un navigateur, ou joue en ligne via GitHub Pages. Aucune
 | `game.js` | Moteur : exploration, inventaire, carnet, chrono, verrou final |
 | `fx.js` | Rendu commun : caméra, lumière, particules |
 | `leaderboard.js` | Classement en ligne |
-| `widgets2.js` … `widgets7.js` | Types d'énigmes ajoutés |
+| `widgets2.js` … `widgets11.js` | Types d'énigmes ajoutés |
 | `logic.js` | Générateurs d'énigmes (aléatoires à chaque partie) |
 | `content*.js` | Histoires, objets, documents et énigmes des scénarios |
 | `scenes*.js` | Décors animés dessinés sur canvas |

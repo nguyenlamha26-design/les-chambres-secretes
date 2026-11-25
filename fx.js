@@ -25,7 +25,9 @@
     phare: { tint: '#9ac0ff', ta: .14, lift: .08, bloom: .55, p: 'dust', pc: '#d8e8ff', bokeh: '#ffcf80' },
     other: { tint: '#c8a0ff', ta: .12, lift: .10, bloom: .55, p: 'dust', pc: '#f0e0ff', bokeh: '#d8a8ff' },
     pho: { tint: '#ffc890', ta: .12, lift: .08, bloom: .5, p: 'dust', pc: '#fff0d0', bokeh: '#ff8a50' },
-    wuxia: { tint: '#a8c8ff', ta: .12, lift: .08, bloom: .55, p: 'firefly', pc: '#ffe8f0', bokeh: '#ffd27a' }
+    wuxia: { tint: '#a8c8ff', ta: .12, lift: .08, bloom: .55, p: 'firefly', pc: '#ffe8f0', bokeh: '#ffd27a' },
+    theatre: { tint: '#ffb070', ta: .12, lift: .06, bloom: .55, p: 'dust', pc: '#fff0d0', bokeh: '#ff5a4a' },
+    musee: { tint: '#c8d8ff', ta: .1, lift: .08, bloom: .45, p: 'dust', pc: '#ffffff', bokeh: '#a8c8ff' }
   };
   const theme = id => THEME[id] || THEME.class;
 
