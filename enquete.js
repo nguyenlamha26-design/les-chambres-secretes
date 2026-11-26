@@ -78,26 +78,71 @@
   const u = (k, p) => { let s = (U[lang()] || U.fr)[k] ?? U.fr[k]; if (p) for (const n in p) s = s.split('{' + n + '}').join(p[n]); return s; };
   const ICON = { report: '📑', pv: '📋', dep: '🗣️', sms: '💬', cam: '📹', bill: '🧾', bank: '🏦', photo: '📷', note: '🗒️', letter: '✉️', calls: '📞' };
 
-  // ---------------- Portraits ----------------
+  // ---------------- Portraits (style photo d'identité, dessinés en SVG) ----------------
+  let fid = 0;
+  const hex = c => { c = c.replace('#', ''); if (c.length === 3) c = c.split('').map(x => x + x).join(''); return [0, 2, 4].map(i => parseInt(c.slice(i, i + 2), 16)); };
+  const tone = (c, k) => { const [r, g, b] = hex(c); const f = v => Math.max(0, Math.min(255, Math.round(k < 0 ? v * (1 + k) : v + (255 - v) * k))); return '#' + [r, g, b].map(v => f(v).toString(16).padStart(2, '0')).join(''); };
   function face(f, big) {
-    f = f || {}; const s = f.s || '#e8c4a0', h = f.h || '#2a2018', c = f.c || '#3a4a6a', st = f.st || 'short';
-    const hair = {
-      short: `<path d="M30 46c0-20 12-30 30-30s30 10 30 30c-6-10-16-14-30-14s-24 4-30 14z" fill="${h}"/>`,
-      side: `<path d="M29 50c-2-22 12-34 31-34 20 0 32 12 30 34-4-12-14-18-36-16-12 1-20 6-25 16z" fill="${h}"/>`,
-      long: `<path d="M26 92c-4-30-6-76 34-76s38 46 34 76l-10-4c4-20 4-38-2-48-8 6-20 8-38 6-6 12-6 26-8 46z" fill="${h}"/>`,
-      bun: `<circle cx="60" cy="14" r="10" fill="${h}"/><path d="M30 48c0-20 12-30 30-30s30 10 30 30c-8-12-18-16-30-16s-22 4-30 16z" fill="${h}"/>`,
-      bald: `<path d="M30 52c0-6 2-10 4-12M90 52c0-6-2-10-4-12" stroke="${h}" stroke-width="6" fill="none"/>`,
-      cap: `<path d="M28 40c2-16 14-24 32-24s30 8 32 24z" fill="${h}"/><rect x="58" y="36" width="44" height="7" rx="3" fill="${h}"/>`
+    f = f || {}; const s = f.s || '#e8c4a0', h = f.h || '#2a2018', c = f.c || '#3a4a6a', st = f.st || 'short', id = 'pf' + (++fid);
+    let seed = 0; for (const ch of s + h + c + st + (f.g || '') + (f.m || '')) seed = (seed * 31 + ch.charCodeAt(0)) >>> 0;
+    const rnd = () => { seed = (seed * 1103515245 + 12345) >>> 0; return (seed >>> 8) / 16777216; };
+    const jw = 24 + rnd() * 5, ey = 57 + rnd() * 2, ex = 10 + rnd() * 2, nl = 9 + rnd() * 3, my = 77 + rnd() * 2, lw = 6 + rnd() * 2.5, br = rnd() * 2;
+    const iris = f.e || (rnd() < .5 ? '#3a2416' : '#2a1a10'), sd = tone(s, -.22), sdd = tone(s, -.38), sl = tone(s, .25), hl = tone(h, .28), hd = tone(h, -.35), cl = tone(c, .18), cd = tone(c, -.4);
+    const fem = st === 'long' || st === 'bun';
+    const head = `M${60 - jw - 3} 54C${60 - jw - 3} 32 ${46} 23 60 23S${60 + jw + 3} 32 ${60 + jw + 3} 54C${60 + jw + 2} 70 ${60 + jw - 6} 82 ${66} 88Q60 91 54 88C${60 - jw + 6} 82 ${60 - jw - 2} 70 ${60 - jw - 3} 54Z`;
+    const back = st === 'long' ? `<path d="M${60 - jw - 9} 56C${60 - jw - 12} 26 44 14 60 14S${60 + jw + 12} 26 ${60 + jw + 9} 56C${60 + jw + 12} 80 ${60 + jw + 16} 100 ${60 + jw + 8} 118L${60 - jw - 8} 118C${60 - jw - 16} 100 ${60 - jw - 12} 80 ${60 - jw - 9} 56Z" fill="url(#${id}h)"/>`
+      : st === 'bun' ? `<ellipse cx="60" cy="17" rx="13" ry="10" fill="url(#${id}h)"/><path d="M50 14q10-6 20 0" stroke="${hl}" stroke-width="1" fill="none" opacity=".5"/>` : '';
+    const strands = (d, n) => Array.from({ length: n }, (_, i) => `<path d="${d(i, n)}" stroke="${hl}" stroke-width=".6" fill="none" opacity=".35"/>`).join('');
+    const front = {
+      short: `<path d="M${60 - jw - 3} 52C${60 - jw - 5} 30 44 18 60 18S${60 + jw + 5} 30 ${60 + jw + 3} 52C${60 + jw} 42 ${60 + jw - 4} 36 ${60 + jw - 8} 34C68 37 52 37 40 33C${60 - jw + 2} 38 ${60 - jw} 44 ${60 - jw - 3} 52Z" fill="url(#${id}h)"/>` + strands((i, n) => `M${40 + i * 40 / n} 21q${3 - i * .6} 6 ${1 + i * .4} 13`, 9),
+      side: `<path d="M${60 - jw - 4} 54C${60 - jw - 6} 28 44 17 61 17S${60 + jw + 6} 30 ${60 + jw + 3} 54C${60 + jw + 1} 44 ${60 + jw - 3} 38 ${60 + jw - 7} 35C70 33 54 31 46 36C40 38 ${60 - jw} 44 ${60 - jw - 4} 54Z" fill="url(#${id}h)"/>` + strands((i, n) => `M${46 + i * 30 / n} 20q${10 - i} 4 ${16 - i} 14`, 8) + `<path d="M46 23q4 9 0 13" stroke="${hd}" stroke-width="1" fill="none" opacity=".6"/>`,
+      long: `<path d="M${60 - jw - 6} 66C${60 - jw - 8} 30 44 17 60 17S${60 + jw + 8} 30 ${60 + jw + 6} 66C${60 + jw + 2} 52 ${60 + jw - 2} 40 ${62} 31C${56} 40 46 44 ${60 - jw - 1} 46C${60 - jw - 3} 52 ${60 - jw - 4} 58 ${60 - jw - 6} 66Z" fill="url(#${id}h)"/>` + strands((i, n) => `M${60 - i * 3} 22q${-6 - i} 10 ${-12 - i * 1.5} ${24 + i * 4}`, 7) + strands((i, n) => `M${62 + i * 3} 22q${6 + i} 10 ${10 + i * 1.5} ${24 + i * 4}`, 7),
+      bun: `<path d="M${60 - jw - 3} 54C${60 - jw - 5} 30 44 21 60 21S${60 + jw + 5} 30 ${60 + jw + 3} 54C${60 + jw} 42 ${60 + jw - 6} 35 60 33C${60 - jw + 6} 35 ${60 - jw} 42 ${60 - jw - 3} 54Z" fill="url(#${id}h)"/>` + strands((i, n) => `M60 23q${-14 + i * 3.5} 3 ${-20 + i * 5} 14`, 9),
+      bald: `<path d="M${60 - jw - 4} 66C${60 - jw - 6} 56 ${60 - jw - 4} 46 ${60 - jw - 1} 42L${60 - jw + 3} 44C${60 - jw + 1} 52 ${60 - jw} 60 ${60 - jw - 1} 68ZM${60 + jw + 4} 66C${60 + jw + 6} 56 ${60 + jw + 4} 46 ${60 + jw + 1} 42L${60 + jw - 3} 44C${60 + jw - 1} 52 ${60 + jw} 60 ${60 + jw + 1} 68Z" fill="url(#${id}h)"/><ellipse cx="54" cy="31" rx="11" ry="5" fill="#fff" opacity=".22"/>`,
+      cap: `<path d="M${60 - jw - 3} 52C${60 - jw - 4} 44 ${60 - jw - 2} 40 ${60 - jw} 38L${60 + jw} 38C${60 + jw + 2} 40 ${60 + jw + 4} 44 ${60 + jw + 3} 52C${60 + jw} 46 ${60 + jw - 3} 42 60 42S${60 - jw} 46 ${60 - jw - 3} 52Z" fill="url(#${id}h)"/>
+        <path d="M${60 - jw - 2} 40C${60 - jw - 2} 22 46 15 60 15S${60 + jw + 2} 22 ${60 + jw + 2} 40Z" fill="url(#${id}c)"/><path d="M${60 - jw - 4} 40Q60 34 ${60 + jw + 4} 40L${60 + jw + 6} 45Q60 38 ${60 - jw - 6} 45Z" fill="${cd}"/>
+        <rect x="55" y="25" width="10" height="8" rx="1.5" fill="#d8b84a"/><path d="M57 29h6M60 26.5v5" stroke="#7a5a10" stroke-width=".9"/>`
     }[st] || '';
-    return `<svg class="face${big ? ' big' : ''}" viewBox="0 0 120 130" aria-hidden="true">
-      <rect width="120" height="130" fill="${f.bg || '#cfd3d6'}"/>${[30, 50, 70, 90, 110].map(y => `<line x1="0" x2="120" y1="${y}" y2="${y}" stroke="#0002"/>`).join('')}
-      <path d="M10 130c4-30 22-40 50-40s46 10 50 40z" fill="${c}"/><path d="M50 92l10 14 10-14z" fill="${f.sh || '#f2efe8'}"/>
-      <rect x="52" y="74" width="16" height="20" fill="${s}"/><ellipse cx="60" cy="54" rx="27" ry="32" fill="${s}"/>
-      ${hair}${f.old ? `<path d="M44 74q16 6 32 0M42 40q6-3 12 0M66 40q6-3 12 0" stroke="#0003" fill="none" stroke-width="1.5"/>` : ''}
-      <circle cx="49" cy="56" r="3" fill="#2a1a14"/><circle cx="71" cy="56" r="3" fill="#2a1a14"/>
-      ${f.g ? `<g fill="none" stroke="#222" stroke-width="2"><circle cx="49" cy="56" r="8"/><circle cx="71" cy="56" r="8"/><path d="M57 56h6"/></g>` : ''}
-      ${f.m ? `<path d="M48 72q12-5 24 0" stroke="${h}" stroke-width="4" fill="none"/>` : ''}
-      <path d="M52 76q8 4 16 0" stroke="#8a4a3a" stroke-width="2.5" fill="none"/>
+    const eye = x => `<path d="M${x - 6} ${ey}Q${x} ${ey - 4.6} ${x + 6} ${ey}Q${x} ${ey + 3.4} ${x - 6} ${ey}Z" fill="#f4efe8"/>
+      <circle cx="${x}" cy="${ey - .2}" r="2.7" fill="${iris}"/><circle cx="${x}" cy="${ey - .2}" r="1.3" fill="#0a0604"/><circle cx="${x + .9}" cy="${ey - 1.2}" r=".75" fill="#fff" opacity=".9"/>
+      <path d="M${x - 6.4} ${ey + .2}Q${x} ${ey - 5.2} ${x + 6.4} ${ey - .4}" stroke="${hd}" stroke-width="1.4" fill="none"/><path d="M${x - 5} ${ey + 2.2}Q${x} ${ey + 4} ${x + 5} ${ey + 2}" stroke="${sd}" stroke-width=".7" fill="none" opacity=".8"/>
+      ${f.old ? `<path d="M${x - 5} ${ey + 4.5}Q${x} ${ey + 7} ${x + 5} ${ey + 4.2}" stroke="${sdd}" stroke-width=".6" fill="none" opacity=".6"/>` : ''}`;
+    const brow = (x, k) => `<path d="M${x - 7 * k} ${ey - 7 + br}Q${x - 1 * k} ${ey - 11.5 + br} ${x + 7 * k} ${ey - 8.5 + br}L${x + 7 * k} ${ey - 7.4 + br}Q${x} ${ey - 9.6 + br} ${x - 7 * k} ${ey - 5.8 + br}Z" fill="${st === 'bald' ? tone(h, -.2) : hd}" opacity="${fem ? .75 : .95}"/>`;
+    const L = 60 - ex, R = 60 + ex, nb = ey + nl;
+    return `<svg class="face${big ? ' big' : ''}" viewBox="0 0 120 130" aria-hidden="true"><defs>
+      <radialGradient id="${id}b" cx="50%" cy="38%" r="75%"><stop offset="0" stop-color="${tone(f.bg || '#cdd3d8', .35)}"/><stop offset="1" stop-color="${tone(f.bg || '#cdd3d8', -.18)}"/></radialGradient>
+      <radialGradient id="${id}s" cx="44%" cy="40%" r="62%"><stop offset="0" stop-color="${sl}"/><stop offset=".55" stop-color="${s}"/><stop offset="1" stop-color="${sd}"/></radialGradient>
+      <linearGradient id="${id}h" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="${hl}"/><stop offset=".45" stop-color="${h}"/><stop offset="1" stop-color="${hd}"/></linearGradient>
+      <linearGradient id="${id}c" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${cl}"/><stop offset=".6" stop-color="${c}"/><stop offset="1" stop-color="${cd}"/></linearGradient>
+      <radialGradient id="${id}v" cx="50%" cy="45%" r="70%"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></radialGradient>
+      <filter id="${id}n" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="${fid % 97}"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .55 0"/></filter>
+      <filter id="${id}k"><feGaussianBlur stdDeviation=".3"/><feColorMatrix type="saturate" values=".82"/></filter><filter id="${id}B" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.2"/></filter>
+      <linearGradient id="${id}x" x1="0" y1="0" x2="1" y2=".25"><stop offset=".42" stop-color="${sdd}" stop-opacity="0"/><stop offset="1" stop-color="${sdd}" stop-opacity=".5"/></linearGradient></defs>
+      <rect width="120" height="130" fill="url(#${id}b)"/>
+      <g filter="url(#${id}k)"><g transform="translate(-10 -3) scale(1.17)">${back}
+      <path d="M4 130C6 108 22 98 44 94L60 100L76 94C98 98 114 108 116 130Z" fill="url(#${id}c)"/>
+      <path d="M48 92Q60 104 72 92L70 99Q60 108 50 99Z" fill="${f.sh || (fem ? s : '#efece4')}"/>${fem ? '' : `<path d="M47 93L60 112L73 93L69 104L60 116L51 104Z" fill="${f.sh || '#efece4'}" opacity=".95"/><path d="M60 112v18" stroke="${cd}" stroke-width=".8" opacity=".5"/>`}
+      <path d="M30 112Q34 104 44 100M90 112Q86 104 76 100" stroke="${cd}" stroke-width="1.2" fill="none" opacity=".5"/>
+      <path d="M51 78L51 98Q60 104 69 98L69 78Z" fill="${sd}"/><path d="M51 84Q60 92 69 84L69 80L51 80Z" fill="${sdd}" opacity=".55"/>
+      <ellipse cx="${60 - jw - 3}" cy="${ey + 3}" rx="4" ry="7" fill="${sd}"/><ellipse cx="${60 + jw + 3}" cy="${ey + 3}" rx="4" ry="7" fill="${sd}"/>
+      <path d="${head}" fill="url(#${id}s)"/><path d="${head}" fill="url(#${id}x)"/>
+      <g filter="url(#${id}B)"><path d="${head}" fill="none" stroke="${sdd}" stroke-width="3" opacity=".3"/><ellipse cx="56" cy="37" rx="11" ry="5" fill="#fff" opacity=".2"/><ellipse cx="${L - 3}" cy="${ey + 9}" rx="5" ry="3" fill="#fff" opacity=".16"/><ellipse cx="${R + 3}" cy="${ey + 9}" rx="5" ry="3" fill="#fff" opacity=".1"/>
+      <ellipse cx="${60 + 3.5}" cy="${nb - 3}" rx="2.4" ry="6" fill="${sdd}" opacity=".35"/><ellipse cx="60" cy="${my + 5.5}" rx="4" ry="1.6" fill="${sdd}" opacity=".35"/><ellipse cx="${60 + jw - 3}" cy="${my - 4}" rx="4" ry="9" fill="${sdd}" opacity=".25"/></g>
+      <ellipse cx="${L - 4}" cy="${my - 8}" rx="6" ry="4" fill="#d0605a" opacity="${fem ? .16 : .09}"/><ellipse cx="${R + 4}" cy="${my - 8}" rx="6" ry="4" fill="#d0605a" opacity="${fem ? .16 : .09}"/>
+      <ellipse cx="${L}" cy="${ey - 1}" rx="8" ry="5" fill="${sd}" opacity=".35"/><ellipse cx="${R}" cy="${ey - 1}" rx="8" ry="5" fill="${sd}" opacity=".35"/>
+      ${eye(L)}${eye(R)}${brow(L, 1)}${brow(R, -1)}
+      <path d="M${60 - 2} ${ey + 2}Q${60 - 3.5} ${nb - 4} ${60 - 4.5} ${nb}" stroke="${sd}" stroke-width="1.1" fill="none" opacity=".8"/><path d="M61 ${ey + 3}L61.5 ${nb - 3}" stroke="${sl}" stroke-width="1.6" opacity=".55"/>
+      <path d="M${60 - 5.5} ${nb + .5}Q${60 - 3} ${nb + 3} 60 ${nb + 2.2}Q${60 + 3} ${nb + 3} ${60 + 5.5} ${nb + .5}" stroke="${sdd}" stroke-width="1" fill="none"/>
+      <ellipse cx="${60 - 2.6}" cy="${nb + 1.2}" rx="1.3" ry=".8" fill="${sdd}"/><ellipse cx="${60 + 2.6}" cy="${nb + 1.2}" rx="1.3" ry=".8" fill="${sdd}"/>
+      ${f.old ? `<path d="M${60 - 7} ${nb + 2}Q${60 - 10} ${my} ${60 - 8} ${my + 4}M${60 + 7} ${nb + 2}Q${60 + 10} ${my} ${60 + 8} ${my + 4}M46 38q14-3 28 0M48 42q12-2 24 0" stroke="${sdd}" stroke-width=".7" fill="none" opacity=".55"/>` : ''}
+      <path d="M${60 - lw} ${my}Q${60 - 2} ${my - 2.6} 60 ${my - 1.6}Q${60 + 2} ${my - 2.6} ${60 + lw} ${my}Q60 ${my + .8} ${60 - lw} ${my}Z" fill="${tone(fem ? '#b8505a' : s, fem ? 0 : -.3)}"/>
+      <path d="M${60 - lw + 1} ${my + .3}Q60 ${my + 4.4} ${60 + lw - 1} ${my + .3}Q60 ${my + 1.4} ${60 - lw + 1} ${my + .3}Z" fill="${tone(fem ? '#c86a70' : s, fem ? 0 : -.18)}"/>
+      <path d="M${60 - lw} ${my}Q60 ${my + 1} ${60 + lw} ${my}" stroke="${tone(s, -.55)}" stroke-width=".8" fill="none"/>
+      <path d="M${60 - 3} ${my + 7}Q60 ${my + 8.5} ${60 + 3} ${my + 7}" stroke="${sd}" stroke-width=".8" fill="none" opacity=".6"/>
+      ${f.m ? `<path d="M${60 - lw - 3} ${my - .5}Q${60 - lw} ${my - 6} 60 ${my - 4.2}Q${60 + lw} ${my - 6} ${60 + lw + 3} ${my - .5}Q${60 + lw} ${my - 3} 60 ${my - 2.4}Q${60 - lw} ${my - 3} ${60 - lw - 3} ${my - .5}Z" fill="url(#${id}h)"/>` : ''}
+      ${front}
+      ${f.g ? `<g fill="#bcd8e8" fill-opacity=".12" stroke="#1a1a1a" stroke-width="1.3"><rect x="${L - 8}" y="${ey - 6}" width="16" height="12" rx="4"/><rect x="${R - 8}" y="${ey - 6}" width="16" height="12" rx="4"/></g><path d="M${L + 8} ${ey - 1}Q60 ${ey - 3} ${R - 8} ${ey - 1}M${L - 8} ${ey - 2}L${60 - jw - 3} ${ey - 3}M${R + 8} ${ey - 2}L${60 + jw + 3} ${ey - 3}" stroke="#1a1a1a" stroke-width="1.2" fill="none"/><path d="M${L - 5} ${ey - 4}l4 0M${R - 5} ${ey - 4}l4 0" stroke="#fff" stroke-width="1" opacity=".6"/>` : ''}
+      </g></g><rect width="120" height="130" fill="url(#${id}v)"/><rect width="120" height="130" filter="url(#${id}n)" opacity=".8" style="mix-blend-mode:overlay"/>
     </svg>`;
   }
 
@@ -328,5 +373,5 @@
     if (modal.startsWith('d:') && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) { const od = openDocs(), i = od.indexOf(modal.slice(2)), j = i + (e.key === 'ArrowRight' ? 1 : -1); if (od[j]) showDoc(od[j]); }
   });
 
-  window.Dossier = { list, open: openCase, u, render: () => render(), get state() { return st; }, get C() { return C; } };
+  window.Dossier = { list, face, open: openCase, u, render: () => render(), get state() { return st; }, get C() { return C; } };
 })();
