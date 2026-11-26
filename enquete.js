@@ -33,7 +33,7 @@
       endTitle: 'Dossier classé', truth: 'Ce qui s’est vraiment passé', time: 'Temps', errors: 'Erreurs', hints: 'Indices', toArch: 'Retour aux archives', replay: 'Rejouer',
       ranks: ['Stagiaire', 'Enquêteur·rice', 'Inspecteur·rice principal·e', 'Commissaire'],
       victim: 'Victime', markQ: 'À vérifier', markS: 'Suspect·e', markC: 'Écarté·e', age: '{n} ans', close: 'Fermer', prev: '◀', nextD: '▶',
-      k: { report: 'Rapport', pv: 'Procès-verbal', dep: 'Déposition', sms: 'Messages', cam: 'Caméra', bill: 'Reçu', bank: 'Relevé', photo: 'Photo', note: 'Note', letter: 'Lettre', calls: 'Appels' },
+      k: { report: 'Rapport', pv: 'Procès-verbal', dep: 'Déposition', sms: 'Messages', cam: 'Caméra', bill: 'Reçu', bank: 'Relevé', photo: 'Photo', note: 'Note', letter: 'Lettre', calls: 'Appels' }, photoBy: 'Photo d’illustration :',
       depT: 'DÉPOSITION', depOf: 'Témoin', q: 'Question', ownerOf: 'Téléphone de {x}', camT: 'EXTRAIT VIDÉO', total: 'TOTAL'
     },
     en: {
@@ -52,7 +52,7 @@
       endTitle: 'Case closed', truth: 'What really happened', time: 'Time', errors: 'Mistakes', hints: 'Hints', toArch: 'Back to the archives', replay: 'Play again',
       ranks: ['Trainee', 'Investigator', 'Senior inspector', 'Chief inspector'],
       victim: 'Victim', markQ: 'To check', markS: 'Suspect', markC: 'Cleared', age: 'age {n}', close: 'Close', prev: '◀', nextD: '▶',
-      k: { report: 'Report', pv: 'Official record', dep: 'Statement', sms: 'Messages', cam: 'Camera', bill: 'Receipt', bank: 'Statement', photo: 'Photo', note: 'Note', letter: 'Letter', calls: 'Calls' },
+      k: { report: 'Report', pv: 'Official record', dep: 'Statement', sms: 'Messages', cam: 'Camera', bill: 'Receipt', bank: 'Statement', photo: 'Photo', note: 'Note', letter: 'Letter', calls: 'Calls' }, photoBy: 'Illustrative photo:',
       depT: 'WITNESS STATEMENT', depOf: 'Witness', q: 'Question', ownerOf: '{x}’s phone', camT: 'VIDEO EXTRACT', total: 'TOTAL'
     },
     vi: {
@@ -71,7 +71,7 @@
       endTitle: 'Hồ sơ đã khép', truth: 'Sự thật', time: 'Thời gian', errors: 'Lần sai', hints: 'Manh mối', toArch: 'Về kho hồ sơ', replay: 'Chơi lại',
       ranks: ['Thực tập sinh', 'Điều tra viên', 'Điều tra viên chính', 'Trưởng phòng điều tra'],
       victim: 'Nạn nhân', markQ: 'Cần xác minh', markS: 'Nghi phạm', markC: 'Đã loại trừ', age: '{n} tuổi', close: 'Đóng', prev: '◀', nextD: '▶',
-      k: { report: 'Báo cáo', pv: 'Biên bản', dep: 'Lời khai', sms: 'Tin nhắn', cam: 'Camera', bill: 'Hóa đơn', bank: 'Sao kê', photo: 'Ảnh', note: 'Ghi chú', letter: 'Thư', calls: 'Cuộc gọi' },
+      k: { report: 'Báo cáo', pv: 'Biên bản', dep: 'Lời khai', sms: 'Tin nhắn', cam: 'Camera', bill: 'Hóa đơn', bank: 'Sao kê', photo: 'Ảnh', note: 'Ghi chú', letter: 'Thư', calls: 'Cuộc gọi' }, photoBy: 'Ảnh minh họa:',
       depT: 'BIÊN BẢN LỜI KHAI', depOf: 'Người khai', q: 'Hỏi', ownerOf: 'Điện thoại của {x}', camT: 'TRÍCH XUẤT CAMERA', total: 'TỔNG'
     }
   };
@@ -111,8 +111,11 @@
     if (k === 'cam') return `<div class="cctv"><div class="cchead"><span>● REC</span><b>${H(d.src)}</b><span>${H(d.day)}</span></div>${d.rows.map(r => `<div class="ccrow"><time>${esc(r[0])}</time><p>${H(r[1])}</p></div>`).join('')}${d.foot ? `<p class="ccfoot">${H(d.foot)}</p>` : ''}</div>`;
     if (k === 'bill') return `<div class="rcpt"><h4>${H(d.org)}</h4><p class="rsub">${H(d.sub)}</p><hr>${d.items.map(r => `<div class="rl"><span>${H(r[0])}</span><span>${H(r[1])}</span></div>`).join('')}<hr>
       <div class="rl tot"><span>${u('total')}</span><span>${H(d.total)}</span></div>${d.foot ? `<p class="rsub">${H(d.foot)}</p>` : ''}</div>`;
-    if (k === 'photo') return `<figure class="polar"><div class="shot" style="background:${d.bg || '#3a3a3a'}">${d.items.map(it => `<span style="left:${it[1]}%;top:${it[2]}%;font-size:${it[3] || 40}px">${it[0]}</span>`).join('')}
+    if (k === 'photo') return `<figure class="polar"><div class="shot${d.img ? ' real' : ''}" style="background:${d.bg || '#2a2a2a'}">${d.img
+        ? `<img src="https://images.unsplash.com/photo-${d.img}?w=1100&q=78&auto=format" style="object-position:${d.pos || 'center'}" alt="" draggable="false"><i class="grain"></i>${d.when ? `<time class="exif">${esc(d.when)}</time>` : ''}`
+        : (d.items || []).map(it => `<span style="left:${it[1]}%;top:${it[2]}%;font-size:${it[3] || 40}px">${it[0]}</span>`).join('')}
       ${(d.marks || []).map(m => `<em style="left:${m[1]}%;top:${m[2]}%">${m[0]}</em>`).join('')}</div><figcaption>${H(d.cap)}</figcaption>
+      ${d.credit ? `<small class="credit">${esc(u('photoBy'))} ${esc(d.credit)} · Unsplash</small>` : ''}
       ${d.legend ? `<ol class="legend">${d.legend.map(l => `<li>${H(l)}</li>`).join('')}</ol>` : ''}</figure>`;
     const head = `<div class="phead"><span>${H(d.org)}</span><span>${esc(d.ref || '')}</span></div>`;
     if (k === 'dep') return `<div class="paper dep">${head}<h3>${u('depT')}</h3><div class="dmeta">${(d.meta || []).map(r => `<p><b>${H(r[0])}</b> ${H(r[1])}</p>`).join('')}</div>

@@ -848,6 +848,12 @@ body.dosmode #hud,body.dosmode #gameui{display:none!important}
 .polar{margin:0;background:#fff;padding:12px 12px 16px;box-shadow:0 8px 20px #0009;width:min(560px,100%);box-sizing:border-box;color:#1a1612}
 .shot{position:relative;aspect-ratio:4/3;overflow:hidden;filter:saturate(.85) contrast(1.05)}.shot span{position:absolute;transform:translate(-50%,-50%);line-height:1}
 .shot em{position:absolute;transform:translate(-50%,-50%);background:#ffd400;color:#111;font:800 12px "Segoe UI",sans-serif;font-style:normal;width:26px;height:24px;display:grid;place-items:end center;clip-path:polygon(50% 0,100% 100%,0 100%);padding-bottom:1px;box-sizing:border-box}
+.shot.real{background:#111;filter:none}.shot.real img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.1) saturate(.82) brightness(.96) sepia(.08);user-select:none}
+.shot.real::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 48% 42%,#fff2 0,#0000 38%,#0006 100%)}
+.shot.real .grain{position:absolute;inset:0;pointer-events:none;opacity:.22;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27160%27 height=%27160%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%27.9%27 numOctaves=%272%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27/%3E%3C/svg%3E")}
+.shot.real .exif{position:absolute;right:10px;bottom:8px;z-index:2;font:700 15px/1 "Courier New",monospace;letter-spacing:1px;color:#ff9a2a;text-shadow:0 0 4px #ff6a00aa,0 0 1px #000}
+.shot.real em{z-index:2;box-shadow:none;filter:drop-shadow(0 2px 2px #000a)}
+.polar .credit{display:block;text-align:center;font:11px "Segoe UI",sans-serif;color:#8a8078;margin-top:2px}
 .polar figcaption{font:italic 15px Cambria,serif;text-align:center;margin-top:8px}.legend{margin:8px 0 0;padding-left:22px;font:14px/1.5 "Segoe UI",sans-serif}
 .pbig{display:flex;flex-wrap:wrap;gap:18px;padding:16px}.pbig>div{flex:1;min-width:220px}.pbig p{line-height:1.6}.page{color:#efe7d4aa;font:13px "Courier New",monospace;margin:0 0 8px}.marks{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 #dnote{display:block;width:100%;box-sizing:border-box;min-height:46vh;background:#fdf6c8;color:#1a1612;border:none;padding:16px;font:16px/1.6 Cambria,serif;resize:vertical}
