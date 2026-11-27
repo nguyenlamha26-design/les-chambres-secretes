@@ -1,10 +1,10 @@
 # Les Chambres Secrètes · The Secret Chambers · Mật Thất
 
-Trois modes dans le navigateur : **jeu d'évasion** (explore, fouille, déduis) et **jeu d'enquête** (dossiers d'affaires criminelles à résoudre pièce par pièce). Mode évasion : 20 scénarios (dont 2 corsés, 2 axés sur le récit, 2 très culturels et 2 enquêtes à preuves), classés par catégories, 3 niveaux de difficulté, 143 énigmes de 116 types différents, une section de commentaires. Mode enquête : 3 dossiers. Mode contes et légendes : 2 enquêtes dans le Vietnam d’autrefois. En français, anglais et vietnamien.
+Deux modes dans le navigateur : **jeu d'évasion** (explore, fouille, déduis) et **jeu d'enquête** (dossiers d'affaires criminelles à résoudre pièce par pièce). Mode évasion : 20 scénarios (dont 2 corsés, 2 axés sur le récit, 2 très culturels et 2 enquêtes à preuves), classés par catégories, 3 niveaux de difficulté, 143 énigmes de 116 types différents, une section de commentaires. Mode enquête : 3 dossiers d’aujourd’hui et 2 légendes du Vietnam d’autrefois. En français, anglais et vietnamien.
 
-Three modes in the browser: **escape game** (explore, search, deduce) and **investigation game** (criminal case files solved document by document). Escape mode: 20 scenarios (2 of them tough, 2 story-driven, 2 deeply cultural, 2 evidence-based investigations), sorted into categories, 3 difficulty levels, 143 puzzles of 116 different kinds, a comments section. Investigation mode: 3 case files. Tales and legends mode: 2 investigations in old Vietnam. In French, English and Vietnamese.
+Two modes in the browser: **escape game** (explore, search, deduce) and **investigation game** (criminal case files solved document by document). Escape mode: 20 scenarios (2 of them tough, 2 story-driven, 2 deeply cultural, 2 evidence-based investigations), sorted into categories, 3 difficulty levels, 143 puzzles of 116 different kinds, a comments section. Investigation mode: 3 present-day case files and 2 legends of old Vietnam. In French, English and Vietnamese.
 
-Ba chế độ trên trình duyệt: **thoát phòng** (khám phá, lục tìm, suy luận) và **phá án** (hồ sơ vụ án giải từng tài liệu một). Chế độ thoát phòng: 20 kịch bản (2 kịch bản khó, 2 kịch bản thiên về cốt truyện, 2 kịch bản đậm chất văn hóa, 2 vụ điều tra dựa trên bằng chứng), xếp theo thể loại, 3 cấp độ, 143 câu đố thuộc 116 loại khác nhau, có mục bình luận. Chế độ phá án: 3 hồ sơ. Chế độ truyền thuyết: 2 vụ án thời xưa. Bằng tiếng Pháp, tiếng Anh và tiếng Việt.
+Hai chế độ trên trình duyệt: **thoát phòng** (khám phá, lục tìm, suy luận) và **phá án** (hồ sơ vụ án giải từng tài liệu một). Chế độ thoát phòng: 20 kịch bản (2 kịch bản khó, 2 kịch bản thiên về cốt truyện, 2 kịch bản đậm chất văn hóa, 2 vụ điều tra dựa trên bằng chứng), xếp theo thể loại, 3 cấp độ, 143 câu đố thuộc 116 loại khác nhau, có mục bình luận. Chế độ phá án: 3 hồ sơ thời nay và 2 truyền thuyết Việt Nam ngày xưa. Bằng tiếng Pháp, tiếng Anh và tiếng Việt.
 
 ## Scénarios
 
@@ -41,9 +41,9 @@ Chaque dossier commence par l'appel de ton supérieur. Tu brises les scellés de
 - 💍 **Dossier 02 · Le Collier de la mariée** — Montréal, un mariage vietnamien, des bijoux en or remplacés par des copies
 - 🚂 **Dossier 03 · Le passager de la couchette 4** — le train de nuit Hà Nội → Lào Cai, une couchette vide au petit matin
 
-## Mode contes et légendes
+## Contes et légendes (dans le mode enquête)
 
-Des contes populaires vietnamiens transmis de bouche à oreille, rouverts comme de vraies affaires au tribunal du district : actes notariés (văn tự) où une encre de couleur différente trahit un faux, chansons d’enfants, témoignages. Même règles que le mode enquête. Lien direct : `index.html#culture`.
+Sous les dossiers d’aujourd’hui, une seconde section propose des contes populaires vietnamiens transmis de bouche à oreille, rouverts comme de vraies affaires au tribunal du district : actes notariés (văn tự) où une encre de couleur différente trahit un faux, chansons d’enfants, témoignages. Mêmes règles que les autres dossiers.
 
 - 🌟 **I · Le Sac de trois empans (Túi ba gang)** — d’après « Cây khế » : un homme riche disparu après avoir échangé sa maison contre un carambolier
 - 🐦 **II · Le Chant du loriot (Tiếng chim vàng anh)** — d’après « Tấm Cám » : une reine tombée d’un aréquier, un oiseau qui chante, une chique de bétel
@@ -63,7 +63,7 @@ Ouvre `index.html` dans un navigateur, ou joue en ligne via GitHub Pages. Aucune
 | `fx.js` | Rendu commun : caméra, lumière, particules |
 | `enquete.js` | Moteur du mode enquête : archives, scellés, documents, rapports, score |
 | `dossiers1.js` … `dossiers3.js` | Affaires du mode enquête |
-| `legende1.js`, `legende2.js` | Enquêtes du mode contes et légendes |
+| `legende1.js`, `legende2.js` | Légendes du mode enquête |
 | `leaderboard.js` | Classement en ligne |
 | `widgets2.js` … `widgets11.js` | Types d'énigmes ajoutés |
 | `logic.js` | Générateurs d'énigmes (aléatoires à chaque partie) |

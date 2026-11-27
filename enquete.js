@@ -18,9 +18,8 @@
   // ---------------- Textes de l'interface ----------------
   const U = {
     fr: {
-      modeEsc: 'Jeux d’évasion', modeEscD: 'Explore des salles, fouille, résous des énigmes', modeEnq: 'Enquêtes', modeEnqD: 'Lis le dossier, recoupe les preuves, désigne le coupable',
-      modeCul: 'Contes et légendes', modeCulD: 'Enquête dans le Vietnam d’autrefois, au fil des contes transmis de bouche à oreille',
-      culTitle: 'Registres du tribunal du district', culSub: 'Des contes que l’on se raconte depuis des siècles, rouverts comme de vraies affaires : actes, chansons, témoignages. Lis, recoupe, puis rends ton jugement, preuve à l’appui.',
+      modeEsc: 'Jeux d’évasion', modeEscD: 'Explore des salles, fouille, résous des énigmes', modeEnq: 'Enquêtes', modeEnqD: 'Affaires d’aujourd’hui et légendes d’autrefois : recoupe les preuves, désigne le coupable',
+      culTitle: 'Contes et légendes', culSub: 'Des contes que l’on se raconte depuis des siècles, rouverts comme de vraies affaires : actes, chansons, témoignages. Lis, recoupe, puis rends ton jugement, preuve à l’appui.',
       startOld: 'Entrer au tribunal', messenger: 'Un messager frappe le tambour', receive: 'Recevoir le message', ranksOld: ['Garde du tribunal', 'Greffier', 'Mandarin du district', 'Grand juge de la province'], depOld: 'TÉMOIGNAGE RECUEILLI AU TRIBUNAL',
       archTitle: 'Archives des affaires', archSub: 'Chaque dossier est une vraie enquête : constats, rapports, dépositions, messages, caméras. Lis, recoupe, puis rends tes conclusions, preuve à l’appui.',
       docs: 'documents', people: 'personnes', chaps: 'chapitres', open: 'Ouvrir le dossier', resume: 'Reprendre', restart: 'Recommencer', solved: 'Classé', inProg: 'En cours · chapitre {n}', best: 'Meilleur score', pts: 'pts',
@@ -40,9 +39,8 @@
       depT: 'DÉPOSITION', depOf: 'Témoin', q: 'Question', ownerOf: 'Téléphone de {x}', camT: 'EXTRAIT VIDÉO', total: 'TOTAL'
     },
     en: {
-      modeEsc: 'Escape games', modeEscD: 'Explore rooms, search, solve puzzles', modeEnq: 'Investigations', modeEnqD: 'Read the case file, cross-check the evidence, name the culprit',
-      modeCul: 'Tales and legends', modeCulD: 'Investigate in old Vietnam, through tales passed down by word of mouth',
-      culTitle: 'District court registers', culSub: 'Tales people have told for centuries, reopened as real cases: deeds, songs, testimonies. Read, cross-check, then deliver your judgment, with evidence.',
+      modeEsc: 'Escape games', modeEscD: 'Explore rooms, search, solve puzzles', modeEnq: 'Investigations', modeEnqD: 'Cases of today and legends of old: cross-check the evidence, name the culprit',
+      culTitle: 'Tales and legends', culSub: 'Tales people have told for centuries, reopened as real cases: deeds, songs, testimonies. Read, cross-check, then deliver your judgment, with evidence.',
       startOld: 'Enter the courthouse', messenger: 'A messenger beats the drum', receive: 'Receive the message', ranksOld: ['Court guard', 'Clerk', 'District mandarin', 'Provincial high judge'], depOld: 'TESTIMONY TAKEN AT THE COURT',
       archTitle: 'Case archives', archSub: 'Each file is a real investigation: reports, statements, messages, camera logs. Read, cross-check, then submit your conclusions, with evidence.',
       docs: 'documents', people: 'people', chaps: 'chapters', open: 'Open the file', resume: 'Resume', restart: 'Restart', solved: 'Closed', inProg: 'In progress · chapter {n}', best: 'Best score', pts: 'pts',
@@ -62,9 +60,8 @@
       depT: 'WITNESS STATEMENT', depOf: 'Witness', q: 'Question', ownerOf: '{x}’s phone', camT: 'VIDEO EXTRACT', total: 'TOTAL'
     },
     vi: {
-      modeEsc: 'Thoát phòng', modeEscD: 'Khám phá căn phòng, lục tìm, giải câu đố', modeEnq: 'Phá án', modeEnqD: 'Đọc hồ sơ, đối chiếu chứng cứ, chỉ ra thủ phạm',
-      modeCul: 'Truyền thuyết', modeCulD: 'Phá án thời xưa, theo những câu chuyện truyền miệng',
-      culTitle: 'Sổ án của nha môn', culSub: 'Những câu chuyện được kể lại qua bao đời, mở lại như những vụ án thật: văn tự, câu vè, lời khai. Hãy đọc, đối chiếu, rồi xử án kèm bằng chứng.',
+      modeEsc: 'Thoát phòng', modeEscD: 'Khám phá căn phòng, lục tìm, giải câu đố', modeEnq: 'Phá án', modeEnqD: 'Vụ án hôm nay và truyền thuyết ngày xưa: đối chiếu chứng cứ, chỉ ra thủ phạm',
+      culTitle: 'Truyền thuyết', culSub: 'Những câu chuyện được kể lại qua bao đời, mở lại như những vụ án thật: văn tự, câu vè, lời khai. Hãy đọc, đối chiếu, rồi xử án kèm bằng chứng.',
       startOld: 'Vào công đường', messenger: 'Có người đánh trống báo tin', receive: 'Nhận tin', ranksOld: ['Lính lệ', 'Thư lại', 'Tri huyện', 'Quan Án sát'], depOld: 'LỜI KHAI TẠI NHA MÔN',
       archTitle: 'Kho hồ sơ vụ án', archSub: 'Mỗi hồ sơ là một cuộc điều tra thật sự: biên bản, báo cáo, lời khai, tin nhắn, camera. Hãy đọc, đối chiếu, rồi đưa ra kết luận kèm bằng chứng.',
       docs: 'tài liệu', people: 'nhân vật', chaps: 'chương', open: 'Mở hồ sơ', resume: 'Tiếp tục', restart: 'Chơi lại', solved: 'Đã khép', inProg: 'Đang điều tra · chương {n}', best: 'Điểm cao nhất', pts: 'điểm',
@@ -204,17 +201,20 @@
   const toast = msg => { const t = $('#dtoast'); if (!t) return; t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => { t.hidden = true; }, 2600); };
 
   // ---------------- Liste des dossiers (dans le menu) ----------------
-  function list(el, mode) {
-    const best = store.get('mt-dos-best', {}), cul = mode === 'cul';
-    el.innerHTML = `<div class="darch${cul ? ' old' : ''}"><h3>${cul ? '🏮 ' + u('culTitle') : '🗄️ ' + u('archTitle')}</h3><p class="dsubt">${cul ? u('culSub') : u('archSub')}</p><div class="dfiles">${window.Dossiers.filter(c => (c.mode === 'cul') === cul).map(c => {
-      const s = store.get(KEY(c.id), null), n = c.folders.reduce((a, f) => a + f.docs.length, 0);
-      const status = s && s.done ? `<span class="dst ok">✔ ${u('solved')} · ${s.score} ${u('pts')}</span>` : s && (s.open.length || s.intro) ? `<span class="dst">${u('inProg', { n: s.ch + 1 })}</span>` : '';
-      return `<article class="dfile" style="--acc:${c.color || '#c8302a'}"><div class="dfhead"><span>${H(c.place)}</span><span>DOSSIER ${esc(c.no)}</span></div>
-        <div class="dfic">${c.icon}</div><h4>${H(c.title)}</h4><p>${H(c.pitch)}</p>
-        <div class="dfstats"><span>📄 ${n} ${u('docs')}</span><span>👤 ${c.people.length} ${u('people')}</span><span>📚 ${c.chapters.length} ${u('chaps')}</span></div>
-        ${status}${best[c.id] != null ? `<span class="dst best">🏆 ${u('best')} : ${best[c.id]} ${u('pts')}</span>` : ''}
-        <div class="dfbtns"><button class="dbtn red" data-open="${c.id}">${s && !s.done && (s.open.length || s.intro) ? u('resume') : u('open')} →</button>${s ? `<button class="dbtn ghost" data-restart="${c.id}">↺ ${u('restart')}</button>` : ''}</div></article>`;
-    }).join('')}</div></div>`;
+  function list(el) {
+    const best = store.get('mt-dos-best', {});
+    const cardOf = c => {
+        const s = store.get(KEY(c.id), null), n = c.folders.reduce((a, f) => a + f.docs.length, 0);
+        const status = s && s.done ? `<span class="dst ok">✔ ${u('solved')} · ${s.score} ${u('pts')}</span>` : s && (s.open.length || s.intro) ? `<span class="dst">${u('inProg', { n: s.ch + 1 })}</span>` : '';
+        return `<article class="dfile" style="--acc:${c.color || '#c8302a'}"><div class="dfhead"><span>${H(c.place)}</span><span>DOSSIER ${esc(c.no)}</span></div>
+          <div class="dfic">${c.icon}</div><h4>${H(c.title)}</h4><p>${H(c.pitch)}</p>
+          <div class="dfstats"><span>📄 ${n} ${u('docs')}</span><span>👤 ${c.people.length} ${u('people')}</span><span>📚 ${c.chapters.length} ${u('chaps')}</span></div>
+          ${status}${best[c.id] != null ? `<span class="dst best">🏆 ${u('best')} : ${best[c.id]} ${u('pts')}</span>` : ''}
+          <div class="dfbtns"><button class="dbtn red" data-open="${c.id}">${s && !s.done && (s.open.length || s.intro) ? u('resume') : u('open')} →</button>${s ? `<button class="dbtn ghost" data-restart="${c.id}">↺ ${u('restart')}</button>` : ''}</div></article>`;
+    };
+    const group = (cls, title, sub, arr) => arr.length ? `<div class="darch${cls}"><h3>${title}</h3><p class="dsubt">${sub}</p><div class="dfiles">${arr.map(cardOf).join('')}</div></div>` : '';
+    el.innerHTML = group('', '🗄️ ' + u('archTitle'), u('archSub'), window.Dossiers.filter(c => c.mode !== 'cul'))
+      + group(' old', '🏮 ' + u('culTitle'), u('culSub'), window.Dossiers.filter(c => c.mode === 'cul'));
     el.querySelectorAll('[data-open]').forEach(b => { b.onclick = () => { click(); openCase(b.dataset.open, false); }; });
     el.querySelectorAll('[data-restart]').forEach(b => { b.onclick = () => { if (!confirm(u('confirmRestart'))) return; click(); openCase(b.dataset.restart, true); }; });
   }

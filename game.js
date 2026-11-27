@@ -23,7 +23,7 @@
   const fmt = s => { s = Math.max(0, Math.ceil(s)); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
   const esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]);
 
-  let G = null, menuSc = 0, menuLv = 1, menuCat = 'all', menuMode = /enquete/.test(location.hash) ? 'enq' : /culture|legende/.test(location.hash) ? 'cul' : store.get('mt-mode', 'esc');
+  let G = null, menuSc = 0, menuLv = 1, menuCat = 'all', menuMode = /enquete|culture|legende/.test(location.hash) ? 'enq' : store.get('mt-mode', 'esc') === 'esc' ? 'esc' : 'enq';
   // Catégories des scénarios (un scénario peut en avoir plusieurs) ; « corsé » se déduit de S.hard
   const CATS = [
     ['all', '✨', { fr: 'Tous', en: 'All', vi: 'Tất cả' }],
@@ -161,8 +161,8 @@
     $('#menu').innerHTML = `<div class="mwrap">
       <div class="langs">${LANGS.map(([c, n]) => `<button class="lg${c === lang ? ' on' : ''}" data-l="${c}">${n}</button>`).join('')}</div>
       <h1>${l.title}</h1><p class="tagline">${l.tag}</p>
-      ${window.Dossier ? `<div class="modes">${[['esc', '🔓', 'modeEsc'], ['enq', '🔍', 'modeEnq'], ['cul', '🏮', 'modeCul']].map(([m, ic, k]) => `<button class="mode${m === menuMode ? ' on' : ''}" data-m="${m}"><span>${ic}</span><b>${window.Dossier.u(k)}</b><small>${window.Dossier.u(k + 'D')}</small></button>`).join('')}</div>` : ''}
-      ${(menuMode === 'enq' || menuMode === 'cul') && window.Dossier ? '<div id="dosList"></div>' : `<h3>${l.pickSc}</h3>
+      ${window.Dossier ? `<div class="modes">${[['esc', '🔓', 'modeEsc'], ['enq', '🔍', 'modeEnq']].map(([m, ic, k]) => `<button class="mode${m === menuMode ? ' on' : ''}" data-m="${m}"><span>${ic}</span><b>${window.Dossier.u(k)}</b><small>${window.Dossier.u(k + 'D')}</small></button>`).join('')}</div>` : ''}
+      ${menuMode === 'enq' && window.Dossier ? '<div id="dosList"></div>' : `<h3>${l.pickSc}</h3>
       <div class="cats">${CATS.map(([id, ic]) => `<button class="cat${id === menuCat ? ' on' : ''}" data-c="${id}">${ic} ${catName(id)} <i>${id === 'all' ? SC.length : SC.filter(s => tagsOf(s).includes(id)).length}</i></button>`).join('')}</div>
       <div class="scs">${SC.map((s, i) => `<button class="sc${i === menuSc ? ' on' : ''}"${menuCat !== 'all' && !tagsOf(s).includes(menuCat) ? ' hidden' : ''}><canvas width="400" height="225"></canvas>
         <div class="sct">${s.hard ? `<span class="hardtag">💀 ${l.hard || ''}</span>` : ''}<b>${s.icon} ${X(s.name)}</b><small>${X(s.desc)}</small><span class="ctags">${(TAGS[s.id] || []).map(c => `<i>${CATS.find(x => x[0] === c)[1]} ${catName(c)}</i>`).join('')}</span><em>${best[i + '-' + menuLv] ? '🏆 ' + l.best + ' : ' + fmt(best[i + '-' + menuLv]) : ''}</em></div></button>`).join('')}</div>
@@ -172,7 +172,7 @@
       <section id="cmts" class="cmts"></section>
       <p class="credit">${{ fr: 'Créatrice : ', en: 'Created by ', vi: 'Tác giả: ' }[lang] || 'Créatrice : '}<b>Lam Ha Nguyen</b></p></div>`;
     document.querySelectorAll('.mode').forEach(b => { b.onclick = () => { sfx.click(); menuMode = b.dataset.m; store.set('mt-mode', menuMode); renderMenu(); }; });
-    if ($('#dosList')) { window.Dossier.list($('#dosList'), menuMode); if (window.Comments) window.Comments.mount($('#cmts')); return; }
+    if ($('#dosList')) { window.Dossier.list($('#dosList')); if (window.Comments) window.Comments.mount($('#cmts')); return; }
     document.querySelectorAll('.sc').forEach((b, i) => { b.querySelector('canvas').getContext('2d').drawImage(thumbs[i], 0, 0); b.onclick = () => { sfx.click(); menuSc = i; renderMenu(); }; });
     document.querySelectorAll('.lv').forEach((b, i) => { b.onclick = () => { sfx.click(); menuLv = i; renderMenu(); }; });
     document.querySelectorAll('.cat').forEach(b => { b.onclick = () => { sfx.click(); menuCat = b.dataset.c; renderMenu(); }; });
