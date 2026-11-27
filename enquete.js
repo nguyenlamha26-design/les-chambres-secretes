@@ -19,6 +19,9 @@
   const U = {
     fr: {
       modeEsc: 'Jeux d’évasion', modeEscD: 'Explore des salles, fouille, résous des énigmes', modeEnq: 'Enquêtes', modeEnqD: 'Lis le dossier, recoupe les preuves, désigne le coupable',
+      modeCul: 'Contes et légendes', modeCulD: 'Enquête dans le Vietnam d’autrefois, au fil des contes transmis de bouche à oreille',
+      culTitle: 'Registres du tribunal du district', culSub: 'Des contes que l’on se raconte depuis des siècles, rouverts comme de vraies affaires : actes, chansons, témoignages. Lis, recoupe, puis rends ton jugement, preuve à l’appui.',
+      startOld: 'Entrer au tribunal', messenger: 'Un messager frappe le tambour', receive: 'Recevoir le message', ranksOld: ['Garde du tribunal', 'Greffier', 'Mandarin du district', 'Grand juge de la province'], depOld: 'TÉMOIGNAGE RECUEILLI AU TRIBUNAL',
       archTitle: 'Archives des affaires', archSub: 'Chaque dossier est une vraie enquête : constats, rapports, dépositions, messages, caméras. Lis, recoupe, puis rends tes conclusions, preuve à l’appui.',
       docs: 'documents', people: 'personnes', chaps: 'chapitres', open: 'Ouvrir le dossier', resume: 'Reprendre', restart: 'Recommencer', solved: 'Classé', inProg: 'En cours · chapitre {n}', best: 'Meilleur score', pts: 'pts',
       confirmRestart: 'Recommencer ce dossier depuis le début ? Ta progression sera effacée.',
@@ -33,11 +36,14 @@
       endTitle: 'Dossier classé', truth: 'Ce qui s’est vraiment passé', time: 'Temps', errors: 'Erreurs', hints: 'Indices', toArch: 'Retour aux archives', replay: 'Rejouer',
       ranks: ['Stagiaire', 'Enquêteur·rice', 'Inspecteur·rice principal·e', 'Commissaire'],
       victim: 'Victime', markQ: 'À vérifier', markS: 'Suspect·e', markC: 'Écarté·e', age: '{n} ans', close: 'Fermer', prev: '◀', nextD: '▶',
-      k: { report: 'Rapport', pv: 'Procès-verbal', dep: 'Déposition', sms: 'Messages', cam: 'Caméra', bill: 'Reçu', bank: 'Relevé', photo: 'Photo', note: 'Note', letter: 'Lettre', calls: 'Appels' }, photoBy: 'Photo d’illustration :',
+      k: { report: 'Rapport', pv: 'Procès-verbal', dep: 'Déposition', sms: 'Messages', cam: 'Caméra', bill: 'Reçu', bank: 'Relevé', photo: 'Photo', note: 'Note', letter: 'Lettre', calls: 'Appels', deed: 'Acte', verse: 'Chanson' }, photoBy: 'Photo d’illustration :',
       depT: 'DÉPOSITION', depOf: 'Témoin', q: 'Question', ownerOf: 'Téléphone de {x}', camT: 'EXTRAIT VIDÉO', total: 'TOTAL'
     },
     en: {
       modeEsc: 'Escape games', modeEscD: 'Explore rooms, search, solve puzzles', modeEnq: 'Investigations', modeEnqD: 'Read the case file, cross-check the evidence, name the culprit',
+      modeCul: 'Tales and legends', modeCulD: 'Investigate in old Vietnam, through tales passed down by word of mouth',
+      culTitle: 'District court registers', culSub: 'Tales people have told for centuries, reopened as real cases: deeds, songs, testimonies. Read, cross-check, then deliver your judgment, with evidence.',
+      startOld: 'Enter the courthouse', messenger: 'A messenger beats the drum', receive: 'Receive the message', ranksOld: ['Court guard', 'Clerk', 'District mandarin', 'Provincial high judge'], depOld: 'TESTIMONY TAKEN AT THE COURT',
       archTitle: 'Case archives', archSub: 'Each file is a real investigation: reports, statements, messages, camera logs. Read, cross-check, then submit your conclusions, with evidence.',
       docs: 'documents', people: 'people', chaps: 'chapters', open: 'Open the file', resume: 'Resume', restart: 'Restart', solved: 'Closed', inProg: 'In progress · chapter {n}', best: 'Best score', pts: 'pts',
       confirmRestart: 'Restart this case from the beginning? Your progress will be erased.',
@@ -52,11 +58,14 @@
       endTitle: 'Case closed', truth: 'What really happened', time: 'Time', errors: 'Mistakes', hints: 'Hints', toArch: 'Back to the archives', replay: 'Play again',
       ranks: ['Trainee', 'Investigator', 'Senior inspector', 'Chief inspector'],
       victim: 'Victim', markQ: 'To check', markS: 'Suspect', markC: 'Cleared', age: 'age {n}', close: 'Close', prev: '◀', nextD: '▶',
-      k: { report: 'Report', pv: 'Official record', dep: 'Statement', sms: 'Messages', cam: 'Camera', bill: 'Receipt', bank: 'Statement', photo: 'Photo', note: 'Note', letter: 'Letter', calls: 'Calls' }, photoBy: 'Illustrative photo:',
+      k: { report: 'Report', pv: 'Official record', dep: 'Statement', sms: 'Messages', cam: 'Camera', bill: 'Receipt', bank: 'Statement', photo: 'Photo', note: 'Note', letter: 'Letter', calls: 'Calls', deed: 'Deed', verse: 'Song' }, photoBy: 'Illustrative photo:',
       depT: 'WITNESS STATEMENT', depOf: 'Witness', q: 'Question', ownerOf: '{x}’s phone', camT: 'VIDEO EXTRACT', total: 'TOTAL'
     },
     vi: {
       modeEsc: 'Thoát phòng', modeEscD: 'Khám phá căn phòng, lục tìm, giải câu đố', modeEnq: 'Phá án', modeEnqD: 'Đọc hồ sơ, đối chiếu chứng cứ, chỉ ra thủ phạm',
+      modeCul: 'Truyền thuyết', modeCulD: 'Phá án thời xưa, theo những câu chuyện truyền miệng',
+      culTitle: 'Sổ án của nha môn', culSub: 'Những câu chuyện được kể lại qua bao đời, mở lại như những vụ án thật: văn tự, câu vè, lời khai. Hãy đọc, đối chiếu, rồi xử án kèm bằng chứng.',
+      startOld: 'Vào công đường', messenger: 'Có người đánh trống báo tin', receive: 'Nhận tin', ranksOld: ['Lính lệ', 'Thư lại', 'Tri huyện', 'Quan Án sát'], depOld: 'LỜI KHAI TẠI NHA MÔN',
       archTitle: 'Kho hồ sơ vụ án', archSub: 'Mỗi hồ sơ là một cuộc điều tra thật sự: biên bản, báo cáo, lời khai, tin nhắn, camera. Hãy đọc, đối chiếu, rồi đưa ra kết luận kèm bằng chứng.',
       docs: 'tài liệu', people: 'nhân vật', chaps: 'chương', open: 'Mở hồ sơ', resume: 'Tiếp tục', restart: 'Chơi lại', solved: 'Đã khép', inProg: 'Đang điều tra · chương {n}', best: 'Điểm cao nhất', pts: 'điểm',
       confirmRestart: 'Điều tra lại hồ sơ này từ đầu? Tiến trình sẽ bị xóa.',
@@ -71,12 +80,12 @@
       endTitle: 'Hồ sơ đã khép', truth: 'Sự thật', time: 'Thời gian', errors: 'Lần sai', hints: 'Manh mối', toArch: 'Về kho hồ sơ', replay: 'Chơi lại',
       ranks: ['Thực tập sinh', 'Điều tra viên', 'Điều tra viên chính', 'Trưởng phòng điều tra'],
       victim: 'Nạn nhân', markQ: 'Cần xác minh', markS: 'Nghi phạm', markC: 'Đã loại trừ', age: '{n} tuổi', close: 'Đóng', prev: '◀', nextD: '▶',
-      k: { report: 'Báo cáo', pv: 'Biên bản', dep: 'Lời khai', sms: 'Tin nhắn', cam: 'Camera', bill: 'Hóa đơn', bank: 'Sao kê', photo: 'Ảnh', note: 'Ghi chú', letter: 'Thư', calls: 'Cuộc gọi' }, photoBy: 'Ảnh minh họa:',
+      k: { report: 'Báo cáo', pv: 'Biên bản', dep: 'Lời khai', sms: 'Tin nhắn', cam: 'Camera', bill: 'Hóa đơn', bank: 'Sao kê', photo: 'Ảnh', note: 'Ghi chú', letter: 'Thư', calls: 'Cuộc gọi', deed: 'Văn tự', verse: 'Câu vè' }, photoBy: 'Ảnh minh họa:',
       depT: 'BIÊN BẢN LỜI KHAI', depOf: 'Người khai', q: 'Hỏi', ownerOf: 'Điện thoại của {x}', camT: 'TRÍCH XUẤT CAMERA', total: 'TỔNG'
     }
   };
   const u = (k, p) => { let s = (U[lang()] || U.fr)[k] ?? U.fr[k]; if (p) for (const n in p) s = s.split('{' + n + '}').join(p[n]); return s; };
-  const ICON = { report: '📑', pv: '📋', dep: '🗣️', sms: '💬', cam: '📹', bill: '🧾', bank: '🏦', photo: '📷', note: '🗒️', letter: '✉️', calls: '📞' };
+  const ICON = { report: '📑', pv: '📋', dep: '🗣️', sms: '💬', cam: '📹', bill: '🧾', bank: '🏦', photo: '📷', note: '🗒️', letter: '✉️', calls: '📞', deed: '📜', verse: '🎋' };
 
   // ---------------- Portraits (style photo d'identité, dessinés en SVG) ----------------
   let fid = 0;
@@ -99,6 +108,9 @@
       long: `<path d="M${60 - jw - 6} 66C${60 - jw - 8} 30 44 17 60 17S${60 + jw + 8} 30 ${60 + jw + 6} 66C${60 + jw + 2} 52 ${60 + jw - 2} 40 ${62} 31C${56} 40 46 44 ${60 - jw - 1} 46C${60 - jw - 3} 52 ${60 - jw - 4} 58 ${60 - jw - 6} 66Z" fill="url(#${id}h)"/>` + strands((i, n) => `M${60 - i * 3} 22q${-6 - i} 10 ${-12 - i * 1.5} ${24 + i * 4}`, 7) + strands((i, n) => `M${62 + i * 3} 22q${6 + i} 10 ${10 + i * 1.5} ${24 + i * 4}`, 7),
       bun: `<path d="M${60 - jw - 3} 54C${60 - jw - 5} 30 44 21 60 21S${60 + jw + 5} 30 ${60 + jw + 3} 54C${60 + jw} 42 ${60 + jw - 6} 35 60 33C${60 - jw + 6} 35 ${60 - jw} 42 ${60 - jw - 3} 54Z" fill="url(#${id}h)"/>` + strands((i, n) => `M60 23q${-14 + i * 3.5} 3 ${-20 + i * 5} 14`, 9),
       bald: `<path d="M${60 - jw - 4} 66C${60 - jw - 6} 56 ${60 - jw - 4} 46 ${60 - jw - 1} 42L${60 - jw + 3} 44C${60 - jw + 1} 52 ${60 - jw} 60 ${60 - jw - 1} 68ZM${60 + jw + 4} 66C${60 + jw + 6} 56 ${60 + jw + 4} 46 ${60 + jw + 1} 42L${60 + jw - 3} 44C${60 + jw - 1} 52 ${60 + jw} 60 ${60 + jw + 1} 68Z" fill="url(#${id}h)"/><ellipse cx="54" cy="31" rx="11" ry="5" fill="#fff" opacity=".22"/>`,
+      turban: `<path d="M${60 - jw - 3} 50C${60 - jw - 4} 40 ${60 - jw - 2} 36 ${60 - jw} 35L${60 + jw} 35C${60 + jw + 2} 36 ${60 + jw + 4} 40 ${60 + jw + 3} 50C${60 + jw} 44 ${60 + jw - 3} 40 60 40S${60 - jw} 44 ${60 - jw - 3} 50Z" fill="url(#${id}h)"/>
+        <path d="M${60 - jw - 4} 38C${60 - jw - 5} 24 46 18 60 18S${60 + jw + 5} 24 ${60 + jw + 4} 38Q60 44 ${60 - jw - 4} 38Z" fill="url(#${id}t)"/>${[0, 1, 2, 3].map(i => `<path d="M${60 - jw - 3 + i} ${36 - i * 4}Q60 ${41 - i * 4.5} ${60 + jw + 3 - i} ${36 - i * 4}" stroke="#000" stroke-width=".8" fill="none" opacity=".45"/>`).join('')}`,
+      scarf: `<path d="M${60 - jw - 6} 92C${60 - jw - 10} 60 ${60 - jw - 8} 26 60 16C${60 + jw + 8} 26 ${60 + jw + 10} 60 ${60 + jw + 6} 92L${60 + jw - 1} 92C${60 + jw + 2} 70 ${60 + jw + 1} 52 ${60 + jw - 2} 42Q${60 + 8} 36 60 30Q${60 - 8} 36 ${60 - jw + 2} 42C${60 - jw - 1} 52 ${60 - jw - 2} 70 ${60 - jw + 1} 92Z" fill="url(#${id}t)"/><path d="M${60 - jw + 2} 42Q${60 - 8} 36 60 30Q${60 + 8} 36 ${60 + jw - 2} 42" stroke="${tone(f.k || '#1a1a1a', .3)}" stroke-width=".8" fill="none" opacity=".6"/>`,
       cap: `<path d="M${60 - jw - 3} 52C${60 - jw - 4} 44 ${60 - jw - 2} 40 ${60 - jw} 38L${60 + jw} 38C${60 + jw + 2} 40 ${60 + jw + 4} 44 ${60 + jw + 3} 52C${60 + jw} 46 ${60 + jw - 3} 42 60 42S${60 - jw} 46 ${60 - jw - 3} 52Z" fill="url(#${id}h)"/>
         <path d="M${60 - jw - 2} 40C${60 - jw - 2} 22 46 15 60 15S${60 + jw + 2} 22 ${60 + jw + 2} 40Z" fill="url(#${id}c)"/><path d="M${60 - jw - 4} 40Q60 34 ${60 + jw + 4} 40L${60 + jw + 6} 45Q60 38 ${60 - jw - 6} 45Z" fill="${cd}"/>
         <rect x="55" y="25" width="10" height="8" rx="1.5" fill="#d8b84a"/><path d="M57 29h6M60 26.5v5" stroke="#7a5a10" stroke-width=".9"/>`
@@ -113,6 +125,7 @@
       <radialGradient id="${id}b" cx="50%" cy="38%" r="75%"><stop offset="0" stop-color="${tone(f.bg || '#cdd3d8', .35)}"/><stop offset="1" stop-color="${tone(f.bg || '#cdd3d8', -.18)}"/></radialGradient>
       <radialGradient id="${id}s" cx="44%" cy="40%" r="62%"><stop offset="0" stop-color="${sl}"/><stop offset=".55" stop-color="${s}"/><stop offset="1" stop-color="${sd}"/></radialGradient>
       <linearGradient id="${id}h" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="${hl}"/><stop offset=".45" stop-color="${h}"/><stop offset="1" stop-color="${hd}"/></linearGradient>
+      <linearGradient id="${id}t" x1="0" y1="0" x2=".4" y2="1"><stop offset="0" stop-color="${tone(f.k || '#1a1a1a', .3)}"/><stop offset=".5" stop-color="${f.k || '#1a1a1a'}"/><stop offset="1" stop-color="${tone(f.k || '#1a1a1a', -.4)}"/></linearGradient>
       <linearGradient id="${id}c" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${cl}"/><stop offset=".6" stop-color="${c}"/><stop offset="1" stop-color="${cd}"/></linearGradient>
       <radialGradient id="${id}v" cx="50%" cy="45%" r="70%"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></radialGradient>
       <filter id="${id}n" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="${fid % 97}"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .55 0"/></filter>
@@ -121,7 +134,7 @@
       <rect width="120" height="130" fill="url(#${id}b)"/>
       <g filter="url(#${id}k)"><g transform="translate(-10 -3) scale(1.17)">${back}
       <path d="M4 130C6 108 22 98 44 94L60 100L76 94C98 98 114 108 116 130Z" fill="url(#${id}c)"/>
-      <path d="M48 92Q60 104 72 92L70 99Q60 108 50 99Z" fill="${f.sh || (fem ? s : '#efece4')}"/>${fem ? '' : `<path d="M47 93L60 112L73 93L69 104L60 116L51 104Z" fill="${f.sh || '#efece4'}" opacity=".95"/><path d="M60 112v18" stroke="${cd}" stroke-width=".8" opacity=".5"/>`}
+      <path d="M48 92Q60 104 72 92L70 99Q60 108 50 99Z" fill="${f.sh || (fem ? s : '#efece4')}"/>${f.col === 'cross' ? `<path d="M45 94L66 130L74 130L52 92Z" fill="${tone(c, -.25)}"/><path d="M75 94L58 120" stroke="${cd}" stroke-width="1.4" opacity=".6"/><path d="M47 93L68 130" stroke="${f.sh || '#e8dcc0'}" stroke-width="2.4" opacity=".85"/>` : fem ? '' : `<path d="M47 93L60 112L73 93L69 104L60 116L51 104Z" fill="${f.sh || '#efece4'}" opacity=".95"/><path d="M60 112v18" stroke="${cd}" stroke-width=".8" opacity=".5"/>`}
       <path d="M30 112Q34 104 44 100M90 112Q86 104 76 100" stroke="${cd}" stroke-width="1.2" fill="none" opacity=".5"/>
       <path d="M51 78L51 98Q60 104 69 98L69 78Z" fill="${sd}"/><path d="M51 84Q60 92 69 84L69 80L51 80Z" fill="${sdd}" opacity=".55"/>
       <ellipse cx="${60 - jw - 3}" cy="${ey + 3}" rx="4" ry="7" fill="${sd}"/><ellipse cx="${60 + jw + 3}" cy="${ey + 3}" rx="4" ry="7" fill="${sd}"/>
@@ -162,8 +175,12 @@
       ${(d.marks || []).map(m => `<em style="left:${m[1]}%;top:${m[2]}%">${m[0]}</em>`).join('')}</div><figcaption>${H(d.cap)}</figcaption>
       ${d.credit ? `<small class="credit">${esc(u('photoBy'))} ${esc(d.credit)} · Unsplash</small>` : ''}
       ${d.legend ? `<ol class="legend">${d.legend.map(l => `<li>${H(l)}</li>`).join('')}</ol>` : ''}</figure>`;
-    const head = `<div class="phead"><span>${H(d.org)}</span><span>${esc(d.ref || '')}</span></div>`;
-    if (k === 'dep') return `<div class="paper dep">${head}<h3>${u('depT')}</h3><div class="dmeta">${(d.meta || []).map(r => `<p><b>${H(r[0])}</b> ${H(r[1])}</p>`).join('')}</div>
+    if (k === 'deed') return `<div class="paper deed"><div class="phead"><span>${H(d.org)}</span><span>${H(d.ref || '')}</span></div><h3>${H(d.t2 || d.t)}</h3>${d.sub ? `<p class="dsub">${H(d.sub)}</p>` : ''}
+      <div class="dbody">${X(d.body).split('\n').map(p => p ? `<p>${esc(p).replace(/\[\[(.+?)\]\]/g, '<span class="ink2">$1</span>')}</p>` : '').join('')}</div>
+      ${d.sign ? `<p class="dsign">${H(d.sign)}</p>` : ''}${d.seal ? `<div class="vseal">${esc(d.seal)}</div>` : ''}</div>`;
+    if (k === 'verse') return `<div class="paper verse"><h3>${H(d.t2 || d.t)}</h3>${d.sub ? `<p class="dsub">${H(d.sub)}</p>` : ''}<div class="vlines">${X(d.body).split('\n').map(p => p ? `<p>${esc(p)}</p>` : '<br>').join('')}</div>${d.foot ? `<p class="vfoot">${H(d.foot)}</p>` : ''}</div>`;
+    const head = `<div class="phead"><span>${H(d.org)}</span><span>${H(d.ref || '')}</span></div>`;
+    if (k === 'dep') return `<div class="paper dep">${head}<h3>${C && C.era === 'old' ? u('depOld') : u('depT')}</h3><div class="dmeta">${(d.meta || []).map(r => `<p><b>${H(r[0])}</b> ${H(r[1])}</p>`).join('')}</div>
       ${d.qa.map(([q, a]) => `<p class="dq">— ${H(q)}</p><p class="da">${H(a)}</p>`).join('')}${d.sign ? `<p class="dsign">${H(d.sign)}</p>` : ''}</div>`;
     if (k === 'letter' || k === 'note') return `<div class="paper ${k}">${d.org ? head : ''}<h3>${H(d.t2 || '')}</h3>${d.rows ? rowsT(d.rows) : ''}${paras(d.body)}${d.sign ? `<p class="dsign">${H(d.sign)}</p>` : ''}</div>`;
     return `<div class="paper ${k}">${head}<h3>${H(d.t2 || d.t)}</h3>${d.sub ? `<p class="dsub">${H(d.sub)}</p>` : ''}${d.rows ? rowsT(d.rows) : ''}${paras(d.body)}
@@ -187,9 +204,9 @@
   const toast = msg => { const t = $('#dtoast'); if (!t) return; t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => { t.hidden = true; }, 2600); };
 
   // ---------------- Liste des dossiers (dans le menu) ----------------
-  function list(el) {
-    const best = store.get('mt-dos-best', {});
-    el.innerHTML = `<div class="darch"><h3>🗄️ ${u('archTitle')}</h3><p class="dsubt">${u('archSub')}</p><div class="dfiles">${window.Dossiers.map(c => {
+  function list(el, mode) {
+    const best = store.get('mt-dos-best', {}), cul = mode === 'cul';
+    el.innerHTML = `<div class="darch${cul ? ' old' : ''}"><h3>${cul ? '🏮 ' + u('culTitle') : '🗄️ ' + u('archTitle')}</h3><p class="dsubt">${cul ? u('culSub') : u('archSub')}</p><div class="dfiles">${window.Dossiers.filter(c => (c.mode === 'cul') === cul).map(c => {
       const s = store.get(KEY(c.id), null), n = c.folders.reduce((a, f) => a + f.docs.length, 0);
       const status = s && s.done ? `<span class="dst ok">✔ ${u('solved')} · ${s.score} ${u('pts')}</span>` : s && (s.open.length || s.intro) ? `<span class="dst">${u('inProg', { n: s.ch + 1 })}</span>` : '';
       return `<article class="dfile" style="--acc:${c.color || '#c8302a'}"><div class="dfhead"><span>${H(c.place)}</span><span>DOSSIER ${esc(c.no)}</span></div>
@@ -228,20 +245,20 @@
   }
 
   function renderIntro(el) {
-    const I = C.intro;
+    const I = C.intro, old = C.era === 'old';
     let body;
     if (st.intro === 0) {
       stopRing();
-      body = `<div class="dint s0"><div class="dclock">${esc(I.time)}</div><p class="ddate">${H(I.date)}</p><p class="dunit">${H(I.unit)}</p><p class="dlead">${H(I.lead)}</p><button class="dbtn light" id="dgo">${u('startShift')}</button></div>`;
+      body = `<div class="dint s0"><div class="dclock">${H(I.time)}</div><p class="ddate">${H(I.date)}</p><p class="dunit">${H(I.unit)}</p><p class="dlead">${H(I.lead)}</p><button class="dbtn light" id="dgo">${old ? u('startOld') : u('startShift')}</button></div>`;
     } else if (st.intro === 1) {
-      body = `<div class="dint s1"><div class="dring">☎</div><p class="dunit">${u('incoming')}</p><h2>${H(I.boss.name)}</h2><p class="ddate">${H(I.boss.role)}</p><button class="dbtn light" id="dgo">${u('pickUp')}</button></div>`;
-      if (!ring) { const r = () => { beep(880, .12, 'sine', .05); setTimeout(() => beep(880, .12, 'sine', .05), 180); }; r(); ring = setInterval(r, 1600); }
+      body = `<div class="dint s1"><div class="dring">${old ? '🥁' : '☎'}</div><p class="dunit">${old ? u('messenger') : u('incoming')}</p><h2>${H(I.boss.name)}</h2><p class="ddate">${H(I.boss.role)}</p><button class="dbtn light" id="dgo">${old ? u('receive') : u('pickUp')}</button></div>`;
+      if (!ring) { const r = old ? () => { beep(90, .25, 'sine', .14); setTimeout(() => beep(90, .25, 'sine', .14), 260); setTimeout(() => beep(70, .4, 'sine', .14), 560); } : () => { beep(880, .12, 'sine', .05); setTimeout(() => beep(880, .12, 'sine', .05), 180); }; r(); ring = setInterval(r, old ? 2200 : 1600); }
     } else {
       stopRing(); const n = st.callN || 1;
-      body = `<div class="dint s2"><p class="dunit">☎ ${H(I.boss.name)} — ${H(I.boss.role)}</p><div class="dcall">${I.call.slice(0, n).map((l, i) => `<p class="${i === n - 1 ? 'last' : ''}">${H(l)}</p>`).join('')}</div>
+      body = `<div class="dint s2"><p class="dunit">${old ? '📜' : '☎'} ${H(I.boss.name)} — ${H(I.boss.role)}</p><div class="dcall">${I.call.slice(0, n).map((l, i) => `<p class="${i === n - 1 ? 'last' : ''}">${H(l)}</p>`).join('')}</div>
         <button class="dbtn light" id="dgo">${n < I.call.length ? u('next') + ' ›' : u('openFile') + ' →'}</button></div>`;
     }
-    el.innerHTML = `<div class="dintro" style="--acc:${C.color || '#c8302a'}"><div class="dintop">${langs()}<button class="dskip" id="dskip">${u('skip')} ⏭</button></div>${body}</div>`;
+    el.innerHTML = `<div class="dintro${C.era === 'old' ? ' old' : ''}" style="--acc:${C.color || '#c8302a'}"><div class="dintop">${langs()}<button class="dskip" id="dskip">${u('skip')} ⏭</button></div>${body}</div>`;
     $('#dskip').onclick = () => { click(); stopRing(); st.intro = 3; save(); view = 'board'; modal = 'rules'; render(); };
     $('#dgo').onclick = () => {
       click();
@@ -255,7 +272,7 @@
   function renderBoard(el) {
     const mi = mission(), od = openDocs(), readN = od.filter(d => st.read.includes(d)).length, total = C.folders.reduce((a, f) => a + f.docs.length, 0);
     const nM = C.chapters[st.ch] ? C.chapters[st.ch].missions.length : 0;
-    el.innerHTML = `<div class="dboard" style="--acc:${C.color || '#c8302a'}">
+    el.innerHTML = `<div class="dboard${C.era === 'old' ? ' old' : ''}" style="--acc:${C.color || '#c8302a'}">
       <header class="dtop"><button class="dbtn ghost sm" id="dquit">← ${u('quit')}</button>
         <div class="dtitle"><small>${H(C.intro.unit)} · DOSSIER ${esc(C.no)}</small><b>${H(C.title)}</b></div>
         <div class="dscore">${u('score')} <b>${st.score}</b></div>${langs()}</header>
@@ -356,10 +373,10 @@
   }
   function renderEnd(el) {
     const r = st.score >= 900 ? 3 : st.score >= 700 ? 2 : st.score >= 450 ? 1 : 0, mm = Math.floor(st.t / 60), ss = String(st.t % 60).padStart(2, '0');
-    el.innerHTML = `<div class="dend" style="--acc:${C.color || '#c8302a'}"><div class="dintop">${langs()}</div><div class="dendbox">
+    el.innerHTML = `<div class="dend${C.era === 'old' ? ' old' : ''}" style="--acc:${C.color || '#c8302a'}"><div class="dintop">${langs()}</div><div class="dendbox">
       <div class="dstampbig">${u('endTitle')}</div><h2>${C.icon} ${H(C.title)}</h2>
       <div class="dscores"><div><b>${st.score}</b><small>/ 1000</small></div><div><b>${mm}:${ss}</b><small>${u('time')}</small></div><div><b>${st.err}</b><small>${u('errors')}</small></div><div><b>${Object.keys(st.hints).length}</b><small>${u('hints')}</small></div></div>
-      <p class="drank">🎖️ ${u('ranks')[r]}</p><h4>${u('truth')}</h4><div class="dtruth">${X(C.truth).split('\n').map(p => `<p>${esc(p)}</p>`).join('')}</div>
+      <p class="drank">🎖️ ${u(C.era === 'old' ? 'ranksOld' : 'ranks')[r]}</p><h4>${u('truth')}</h4><div class="dtruth">${X(C.truth).split('\n').map(p => `<p>${esc(p)}</p>`).join('')}</div>
       <div class="drow"><button class="dbtn ghost" id="dback">${u('toArch')}</button><button class="dbtn red" id="dagain">↺ ${u('replay')}</button></div></div></div>`;
     $('#dback').onclick = () => { click(); quit(); };
     $('#dagain').onclick = () => { click(); const id = C.id; openCase(id, true); };

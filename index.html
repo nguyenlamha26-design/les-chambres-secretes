@@ -874,6 +874,32 @@ body.dosmode #hud,body.dosmode #gameui{display:none!important}
 .dtruth{text-align:left;background:#f6f1e4;color:#1a1612;padding:16px 22px;font:16px/1.7 Cambria,serif;box-shadow:0 8px 20px #0009}.dtruth p{margin:0 0 10px}
 @media (max-width:760px){.dmain{grid-template-columns:1fr}.tray{order:-1;flex-direction:row;overflow-x:auto;border-left:none;border-bottom:1px solid #fff1}.tray h4,.tray>p{display:none}.seal{min-width:170px;flex:none}
   .dchaps span{padding:5px 6px;font-size:10px}.dcard{width:calc(50% - 8px);box-sizing:border-box;min-height:110px}.pcard{width:calc(33% - 10px);box-sizing:border-box}.face{width:100%;height:auto}.dtop{gap:8px}.dtitle b{font-size:16px}.dmis b{font-size:14px}}
+/* ---------- Mode culture : Vietnam d'autrefois ---------- */
+.darch.old .dfile{background:linear-gradient(#efe0bc,#d9c28c);font-family:Cambria,"Times New Roman",serif;border-radius:3px;border-top:6px solid #8a1a12}
+.darch.old .dfile::before{display:none}
+.darch.old .dfile::after{content:"";position:absolute;right:16px;bottom:18px;width:34px;height:34px;border:2px solid #b0201a;border-radius:3px;background:repeating-linear-gradient(0deg,#b0201a22 0 4px,transparent 4px 8px);transform:rotate(6deg);opacity:.75}
+.darch.old .dfhead{font-family:"Courier New",monospace}
+.dintro.old,.dend.old{background:radial-gradient(ellipse at 70% 25%,#4a1a12,#1a0806 70%);color:#f3e2bc;font-family:Cambria,"Times New Roman",serif}
+.dintro.old .dclock{font:700 clamp(54px,11vw,110px)/1.05 Cambria,"Times New Roman",serif;color:#e8c06a;text-shadow:0 2px 0 #0008}
+.dintro.old .dring{border-color:#e8c06a66}
+.dboard.old{background:#1e0e0a;color:#f3e2bc}
+.dboard.old .dtop{background:#140806;border-bottom:2px solid #8a5a1a}
+.dboard.old .dmis{background:#2a120c}
+.dboard.old .cork{background-color:#6a1c12;background-image:repeating-linear-gradient(90deg,#ffffff06 0 2px,transparent 2px 9px),radial-gradient(ellipse at 30% 20%,#8a2a1a,#4a120a 80%);background-size:auto,100% 100%;box-shadow:inset 0 0 0 6px #b88a3a,inset 0 0 0 8px #5a3a10,inset 0 0 60px #000a}
+.dboard.old .tray{background:#241008}
+.dboard.old .seal{background:linear-gradient(#efe0bc,#d6bd86)}
+.dboard.old .dcard{background:#f1e5c6;background-image:radial-gradient(#c8a86a22 1px,transparent 1.5px);background-size:7px 7px}
+.dboard.old .dcard.k-deed{background-color:#f3e3bf;border-top:4px solid #8a1a12}.dboard.old .dcard.k-verse{background-color:#e9f0dc}
+.dboard.old .pcard{background:#f1e5c6}
+.dboard.old .dmbox{background:#2a120c;border-color:#b88a3a55}.dboard.old .dmh{background:#2a120c}.dboard.old .dview{background:#3a1a10}
+.dboard.old .paper{background:#f3e6c6;background-image:radial-gradient(#b8965a1c 1px,transparent 1.6px),linear-gradient(#f6ebd0,#ead8ac);background-size:6px 6px,100% 100%;font-family:Cambria,"Times New Roman",serif;font-size:16px;line-height:1.75}
+.paper.deed{border:1px solid #8a6a3a;outline:6px double #8a1a1255;outline-offset:-14px;padding-bottom:70px}
+.paper.deed .dbody p{margin:0 0 8px;color:#1a1410}
+.ink2{color:#4a3a6a;font-weight:500;letter-spacing:.01em}
+.vseal{position:absolute;right:26px;bottom:18px;width:58px;height:58px;display:grid;place-items:center;border:3px solid #b0201a;color:#b0201a;font:700 22px/1 "SimSun","Songti SC",serif;transform:rotate(-8deg);opacity:.8;background:#b0201a14;writing-mode:vertical-rl}
+.paper.verse{text-align:center;background:#eef2e2!important;background-image:none!important}
+.paper.verse .vlines p{margin:0;font:italic 18px/1.9 Cambria,"Times New Roman",serif}
+.paper.verse .vfoot{margin-top:14px;font-size:13px;color:#5a4a3a;font-style:normal;text-align:left;border-top:1px dashed #8a7a5a;padding-top:8px}
 </style>
 </head>
 <body class="nohud">
@@ -949,6 +975,8 @@ body.dosmode #hud,body.dosmode #gameui{display:none!important}
 <script src="dossiers1.js"></script>
 <script src="dossiers2.js"></script>
 <script src="dossiers3.js"></script>
+<script src="legende1.js"></script>
+<script src="legende2.js"></script>
 <script src="leaderboard.js"></script>
 <script src="comments.js"></script>
 </body>
